@@ -6,12 +6,12 @@
   <title>Contact — Kevin’s Tree Service</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/img/kev-log.png">
+  <link rel="icon" type="image/png" href="/public/img/kev-log.png">
 
   <!-- Social Preview -->
   <meta property="og:title" content="Kevin’s Tree Service LLC">
   <meta property="og:description" content="Tree removal, trimming, cleanup, and same‑day service in Atlanta.">
-  <meta property="og:image" content="/img/kev-log.png">
+  <meta property="og:image" content="/public/img/kev-log.png">
   <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="/css/style.css">
@@ -19,9 +19,9 @@
 
 <body>
 
-<!-- ============================
-     NAVIGATION + BURGER MENU
-============================= -->
+<!-- SPARK PARTICLES -->
+<div id="sparkContainer"></div>
+
 <nav class="navbar">
   <div class="brand">
     <img src="/public/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
@@ -43,7 +43,6 @@
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div id="mobileMenu" class="mobile-menu">
   <a href="javascript:history.back()" class="mobile-back silver-text">← Back</a>
   <a href="/index.html">Home</a>
@@ -63,10 +62,7 @@
 </header>
 
 <main class="page-main">
-
   <section class="section light narrow contact-block">
-
-    <!-- LOGO + CONTACT INFO -->
     <div class="contact-header">
       <img src="/public/img/kev-log.png" alt="Kevin’s Tree Service Logo" class="contact-logo">
       <div class="contact-info">
@@ -96,9 +92,7 @@
       <button type="button" class="bubble-btn primary" onclick="sendContactEmail()">Send Message</button>
       <p class="hint silver-soft">This opens your email app with the message ready to send.</p>
     </form>
-
   </section>
-
 </main>
 
 <footer class="footer">
@@ -106,10 +100,19 @@
 </footer>
 
 <script src="/js/app.js"></script>
-
 <script>
 function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
+}
+
+const sparkContainer = document.getElementById("sparkContainer");
+for (let i = 0; i < 25; i++) {
+  const s = document.createElement("div");
+  s.className = "spark";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.animationDuration = 2 + Math.random() * 3 + "s";
+  s.style.animationDelay = Math.random() * 3 + "s";
+  sparkContainer.appendChild(s);
 }
 </script>
 
