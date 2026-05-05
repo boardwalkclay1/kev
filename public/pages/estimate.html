@@ -6,12 +6,12 @@
   <title>Free Estimate — Kevin’s Tree Service</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/img/kev-log.png">
+  <link rel="icon" type="image/png" href="/public/img/kev-log.png">
 
   <!-- Social Preview -->
   <meta property="og:title" content="Kevin’s Tree Service — Free Estimate">
   <meta property="og:description" content="Request a free estimate for tree removal, trimming, or cleanup.">
-  <meta property="og:image" content="/img/kev-log.png">
+  <meta property="og:image" content="/public/img/kev-log.png">
   <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="/css/style.css">
@@ -19,12 +19,15 @@
 
 <body>
 
+<!-- SPARK PARTICLES -->
+<div id="sparkContainer"></div>
+
 <!-- ============================
      NAVIGATION + BURGER MENU
 ============================= -->
 <nav class="navbar">
   <div class="brand">
-    <img src="/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
+    <img src="/public/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
     <span class="brand-text silver-text">KEVIN’S TREE SERVICE LLC</span>
   </div>
 
@@ -117,6 +120,17 @@
 <script>
 function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
+}
+
+// Generate sparks
+const sparkContainer = document.getElementById("sparkContainer");
+for (let i = 0; i < 25; i++) {
+  const s = document.createElement("div");
+  s.className = "spark";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.animationDuration = 2 + Math.random() * 3 + "s";
+  s.style.animationDelay = Math.random() * 3 + "s";
+  sparkContainer.appendChild(s);
 }
 </script>
 
