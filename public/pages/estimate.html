@@ -4,46 +4,121 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Free Estimate — Kevin’s Tree Service</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/public/img/kev-log.png">
+
+  <!-- Social Preview -->
+  <meta property="og:title" content="Kevin’s Tree Service — Free Estimate">
+  <meta property="og:description" content="Request a free estimate for tree removal, trimming, or cleanup.">
+  <meta property="og:image" content="/public/img/kev-log.png">
+  <meta property="og:type" content="website">
+
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
+
+<!-- ============================
+     NAVIGATION + BURGER MENU
+============================= -->
+<nav class="navbar">
+  <div class="brand">
+    <img src="/public/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
+    <span class="brand-text silver-text">KEVIN’S TREE SERVICE LLC</span>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="/index.html" class="silver-text">Home</a></li>
+    <li><a href="/pages/services.html" class="silver-text">Services</a></li>
+    <li><a href="/pages/gallery.html" class="silver-text">Gallery</a></li>
+    <li><a href="/pages/about.html" class="silver-text">About</a></li>
+    <li><a href="/pages/estimate.html" class="active silver-text">Free Estimate</a></li>
+    <li><a href="/pages/contact.html" class="silver-text">Contact</a></li>
+    <li><a href="/pages/admin.html" class="silver-text">Admin</a></li>
+  </ul>
+
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
+  <a href="javascript:history.back()" class="mobile-back silver-text">← Back</a>
+  <a href="/index.html">Home</a>
+  <a href="/pages/services.html">Services</a>
+  <a href="/pages/gallery.html">Gallery</a>
+  <a href="/pages/about.html">About</a>
+  <a href="/pages/estimate.html" class="active">Free Estimate</a>
+  <a href="/pages/contact.html">Contact</a>
+  <a href="/pages/admin.html">Admin</a>
+</div>
+
+<!-- ============================
+     PAGE HEADER
+============================= -->
 <header class="sub-header">
   <div class="sub-header-inner">
-    <h1>Request a Free Estimate</h1>
-    <p>Describe your trees and we’ll respond quickly.</p>
+    <h1 class="silver-text">Request a Free Estimate</h1>
+    <p class="silver-soft">Describe your trees and we’ll respond quickly.</p>
   </div>
 </header>
 
+<!-- ============================
+     MAIN CONTENT
+============================= -->
 <main class="page-main">
-  <!-- mailto keeps this static; opens client’s email app with prefilled body -->
+
   <section class="section light narrow">
+
+    <h2 class="section-title silver-text">Tell Us About the Job</h2>
+
     <form id="estimateForm">
+
       <div class="field">
         <label for="estName">Name</label>
         <input id="estName" type="text" required>
       </div>
+
       <div class="field">
         <label for="estPhone">Phone</label>
         <input id="estPhone" type="tel" required>
       </div>
+
       <div class="field">
         <label for="estAddress">Address (city / area)</label>
         <input id="estAddress" type="text">
       </div>
+
       <div class="field">
         <label for="estDetails">Describe the work</label>
         <textarea id="estDetails" rows="5" required></textarea>
       </div>
+
       <button type="button" class="bubble-btn primary" onclick="sendEstimateEmail()">Send Estimate Request</button>
-      <p class="hint">This will open your email app with everything filled in—just press send.</p>
+
+      <p class="hint silver-soft">
+        This will open your email app with everything filled in — just press send.
+      </p>
+
     </form>
+
   </section>
+
 </main>
 
 <footer class="footer">
-  <p>© 2026 Kevin’s Tree Service LLC</p>
+  <p class="silver-soft">© 2026 Kevin’s Tree Service LLC</p>
 </footer>
 
 <script src="/js/app.js"></script>
+
+<script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("open");
+}
+</script>
+
 </body>
 </html>
