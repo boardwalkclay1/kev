@@ -4,45 +4,114 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — Kevin’s Tree Service</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/public/img/kev-log.png">
+
+  <!-- Social Preview -->
+  <meta property="og:title" content="Kevin’s Tree Service LLC">
+  <meta property="og:description" content="Tree removal, trimming, cleanup, and same‑day service in Atlanta.">
+  <meta property="og:image" content="/public/img/kev-log.png">
+  <meta property="og:type" content="website">
+
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
+
+<!-- ============================
+     NAVIGATION + BURGER MENU
+============================= -->
+<nav class="navbar">
+  <div class="brand">
+    <img src="/public/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
+    <span class="brand-text silver-text">KEVIN’S TREE SERVICE LLC</span>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="/index.html" class="silver-text">Home</a></li>
+    <li><a href="/pages/services.html" class="silver-text">Services</a></li>
+    <li><a href="/pages/gallery.html" class="silver-text">Gallery</a></li>
+    <li><a href="/pages/about.html" class="silver-text">About</a></li>
+    <li><a href="/pages/estimate.html" class="silver-text">Free Estimate</a></li>
+    <li><a href="/pages/contact.html" class="active silver-text">Contact</a></li>
+    <li><a href="/pages/admin.html" class="silver-text">Admin</a></li>
+  </ul>
+
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
+  <a href="javascript:history.back()" class="mobile-back silver-text">← Back</a>
+  <a href="/index.html">Home</a>
+  <a href="/pages/services.html">Services</a>
+  <a href="/pages/gallery.html">Gallery</a>
+  <a href="/pages/about.html">About</a>
+  <a href="/pages/estimate.html">Free Estimate</a>
+  <a href="/pages/contact.html" class="active">Contact</a>
+  <a href="/pages/admin.html">Admin</a>
+</div>
+
 <header class="sub-header">
   <div class="sub-header-inner">
-    <h1>Contact</h1>
-    <p>Call, text, or email anytime.</p>
+    <h1 class="silver-text">Contact</h1>
+    <p class="silver-soft">Call, text, or email anytime.</p>
   </div>
 </header>
 
 <main class="page-main">
-  <section class="section light narrow">
-    <p><strong>Phone:</strong> <a href="tel:14705156134">470‑515‑6134</a></p>
-    <p><strong>Email:</strong> <a href="mailto:kevinmosley2000@gmail.com">kevinmosley2000@gmail.com</a></p>
 
-    <h2 class="section-title small">Quick message</h2>
+  <section class="section light narrow contact-block">
+
+    <!-- LOGO + CONTACT INFO -->
+    <div class="contact-header">
+      <img src="/public/img/kev-log.png" alt="Kevin’s Tree Service Logo" class="contact-logo">
+      <div class="contact-info">
+        <p class="silver-text"><strong>Phone:</strong> <a href="tel:14705156134" class="silver-text">470‑515‑6134</a></p>
+        <p class="silver-text"><strong>Email:</strong> <a href="mailto:kevinmosley2000@gmail.com" class="silver-text">kevinmosley2000@gmail.com</a></p>
+      </div>
+    </div>
+
+    <h2 class="section-title small silver-text">Quick Message</h2>
+
     <form id="contactForm">
       <div class="field">
         <label for="cName">Name</label>
         <input id="cName" type="text" required>
       </div>
+
       <div class="field">
         <label for="cPhone">Phone</label>
         <input id="cPhone" type="tel">
       </div>
+
       <div class="field">
         <label for="cMsg">Message</label>
         <textarea id="cMsg" rows="4" required></textarea>
       </div>
+
       <button type="button" class="bubble-btn primary" onclick="sendContactEmail()">Send Message</button>
-      <p class="hint">This opens your email app with the message ready to send.</p>
+      <p class="hint silver-soft">This opens your email app with the message ready to send.</p>
     </form>
+
   </section>
+
 </main>
 
 <footer class="footer">
-  <p>© 2026 Kevin’s Tree Service LLC</p>
+  <p class="silver-soft">© 2026 Kevin’s Tree Service LLC</p>
 </footer>
 
-<script src="js/app.js"></script>
+<script src="/js/app.js"></script>
+
+<script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("open");
+}
+</script>
+
 </body>
 </html>
