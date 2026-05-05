@@ -4,40 +4,174 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services — Kevin’s Tree Service</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/public/img/kev-log.png">
+
+  <!-- Social Preview -->
+  <meta property="og:title" content="Kevin’s Tree Service — Full Service List">
+  <meta property="og:description" content="Tree removal, trimming, storm cleanup, stump grinding, and more.">
+  <meta property="og:image" content="/public/img/kev-log.png">
+  <meta property="og:type" content="website">
+
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
+
+<!-- ============================
+     NAVIGATION + BURGER MENU
+============================= -->
+<nav class="navbar">
+  <div class="brand">
+    <img src="/public/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
+    <span class="brand-text silver-text">KEVIN’S TREE SERVICE LLC</span>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="/index.html" class="silver-text">Home</a></li>
+    <li><a href="/pages/services.html" class="active silver-text">Services</a></li>
+    <li><a href="/pages/gallery.html" class="silver-text">Gallery</a></li>
+    <li><a href="/pages/about.html" class="silver-text">About</a></li>
+    <li><a href="/pages/estimate.html" class="silver-text">Free Estimate</a></li>
+    <li><a href="/pages/contact.html" class="silver-text">Contact</a></li>
+    <li><a href="/pages/admin.html" class="silver-text">Admin</a></li>
+  </ul>
+
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
+  <a href="javascript:history.back()" class="mobile-back silver-text">← Back</a>
+  <a href="/index.html">Home</a>
+  <a href="/pages/services.html" class="active">Services</a>
+  <a href="/pages/gallery.html">Gallery</a>
+  <a href="/pages/about.html">About</a>
+  <a href="/pages/estimate.html">Free Estimate</a>
+  <a href="/pages/contact.html">Contact</a>
+  <a href="/pages/admin.html">Admin</a>
+</div>
+
+<!-- ============================
+     PAGE HEADER
+============================= -->
 <header class="sub-header">
   <div class="sub-header-inner">
-    <h1>Services</h1>
-    <p>Tree removal, trimming, cleanup, and storm response.</p>
+    <h1 class="silver-text">Services</h1>
+    <p class="silver-soft">Tree removal, trimming, cleanup, storm response, and more.</p>
   </div>
 </header>
 
+<!-- ============================
+     MAIN CONTENT
+============================= -->
 <main class="page-main">
+
+  <!-- TREE REMOVAL -->
   <section class="section light">
-    <h2 class="section-title">Tree Removal</h2>
-    <p>We remove trees of all sizes near homes, fences, sheds, and power lines using safe, controlled methods.</p>
+    <h2 class="section-title silver-text">Tree Removal</h2>
+    <p class="silver-soft">
+      Safe, controlled removal of trees of all sizes — including hazardous, dead, leaning, storm‑damaged, 
+      or trees close to homes, fences, sheds, and power lines. We use ropes, rigging, climbing, and 
+      precision cutting to protect your property.
+    </p>
   </section>
 
+  <!-- TRIMMING -->
   <section class="section light">
-    <h2 class="section-title">Tree Trimming & Pruning</h2>
-    <p>We shape and thin trees to improve health, reduce risk, and open up your yard and roofline.</p>
+    <h2 class="section-title silver-text">Tree Trimming & Pruning</h2>
+    <p class="silver-soft">
+      Structural pruning, thinning, shaping, roofline clearing, deadwood removal, and canopy lifting. 
+      We improve tree health, reduce storm risk, and open up sunlight for your yard.
+    </p>
   </section>
 
+  <!-- EMERGENCY -->
   <section class="section light">
-    <h2 class="section-title">Storm & Emergency Work</h2>
-    <p>Downed limbs or trees after a storm? We offer priority emergency response and cleanup.</p>
+    <h2 class="section-title silver-text">Storm & Emergency Response</h2>
+    <p class="silver-soft">
+      Fast removal of downed trees and limbs after storms. Emergency same‑day response available for 
+      blocked driveways, crushed fences, roof impacts, and dangerous hangers.
+    </p>
   </section>
 
+  <!-- CLEANUP -->
   <section class="section light">
-    <h2 class="section-title">Cleanup & Haul‑Away</h2>
-    <p>Brush, logs, and chips can be hauled away or stacked neatly—your choice.</p>
+    <h2 class="section-title silver-text">Cleanup & Haul‑Away</h2>
+    <p class="silver-soft">
+      Brush, logs, branches, and debris can be hauled away or stacked neatly. We leave your yard clean 
+      and ready to enjoy.
+    </p>
   </section>
+
+  <!-- STUMP GRINDING -->
+  <section class="section light">
+    <h2 class="section-title silver-text">Stump Grinding</h2>
+    <p class="silver-soft">
+      Grind stumps below ground level to remove tripping hazards, prevent regrowth, and prepare the area 
+      for grass, mulch, or new planting.
+    </p>
+  </section>
+
+  <!-- TREE HEALTH -->
+  <section class="section light">
+    <h2 class="section-title silver-text">Tree Health & Evaluation</h2>
+    <p class="silver-soft">
+      We inspect trees for disease, rot, pests, root issues, and structural weakness. Includes 
+      recommendations for treatment, trimming, or removal.
+    </p>
+  </section>
+
+  <!-- LOT CLEARING -->
+  <section class="section light">
+    <h2 class="section-title silver-text">Lot Clearing & Brush Removal</h2>
+    <p class="silver-soft">
+      Clearing overgrown lots, wooded areas, fence lines, and property edges. Great for new builds, 
+      renovations, and reclaiming yard space.
+    </p>
+  </section>
+
+  <!-- CABLING -->
+  <section class="section light">
+    <h2 class="section-title silver-text">Cabling & Structural Support</h2>
+    <p class="silver-soft">
+      Install support systems for split trunks, weak unions, or heavy limbs to reduce failure risk and 
+      extend the life of valuable trees.
+    </p>
+  </section>
+
+  <!-- CLIMBING -->
+  <section class="section light">
+    <h2 class="section-title silver-text">Advanced Climbing & Rigging</h2>
+    <p class="silver-soft">
+      Expert rope work for tight spaces where bucket trucks can’t reach. Precision lowering of limbs 
+      over roofs, decks, and fragile areas.
+    </p>
+  </section>
+
+  <!-- DRONE INSPECTION -->
+  <section class="section light">
+    <h2 class="section-title silver-text">Drone Inspection</h2>
+    <p class="silver-soft">
+      Aerial inspection of tall trees, storm damage, and canopy conditions using drone technology for 
+      safer, faster assessments.
+    </p>
+  </section>
+
 </main>
 
 <footer class="footer">
-  <p>© 2026 Kevin’s Tree Service LLC</p>
+  <p class="silver-soft">© 2026 Kevin’s Tree Service LLC</p>
 </footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("open");
+}
+</script>
+
 </body>
 </html>
