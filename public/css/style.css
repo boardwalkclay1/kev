@@ -7,13 +7,13 @@
   --accent-red: #b7332e;
   --sky-blue: #5fa6d8;
   --cream: #f7f3ea;
-  --dark: #1a1f1d;
-  --text-main: #ffffff;
+  --dark: #111111;
+  --text-main: #f5f5f5;
   --border-soft: #d7d0c2;
 }
 
 /* =========================================
-   RESET + BODY
+   RESET + BASE
 ========================================= */
 *,
 *::before,
@@ -21,11 +21,16 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text-main);
-  background: #0f1512;
+  background: #050607;
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
@@ -47,7 +52,7 @@ body::before {
   background-position: center;
   background-size: contain;
 
-  opacity: 0.14;
+  opacity: 0.16;
   filter: blur(18px);
   transform: scale(1.25);
 
@@ -58,15 +63,28 @@ body::before {
 body::after {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-
-  background: radial-gradient(circle at top, rgba(0,0,0,0.55), rgba(0,0,0,0.92));
-
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(0,0,0,0.6), rgba(0,0,0,0.95));
   z-index: -1;
   pointer-events: none;
+}
+
+/* =========================================
+   SILVER TEXT EFFECTS
+========================================= */
+.silver-text {
+  color: #dedede;
+  text-shadow:
+    0 0 4px rgba(255,255,255,0.4),
+    0 0 10px rgba(255,255,255,0.2);
+  font-weight: 600;
+}
+
+.silver-soft {
+  color: #c4c4c4;
+  text-shadow:
+    0 0 3px rgba(255,255,255,0.25),
+    0 0 6px rgba(255,255,255,0.15);
 }
 
 /* =========================================
@@ -77,8 +95,27 @@ body::after {
   align-items: center;
   justify-content: space-between;
   padding: 14px 6vw;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  position: relative;
+  z-index: 1;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.brand-text {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
 }
 
 .navbar ul {
@@ -90,7 +127,7 @@ body::after {
 }
 
 .navbar a {
-  color: #ffffff;
+  color: #f5f5f5;
   text-decoration: none;
   font-size: 0.9rem;
 }
@@ -107,10 +144,11 @@ body::after {
   text-decoration: none;
   font-weight: 600;
   font-size: 0.9rem;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.5);
 }
 
 /* =========================================
-   HERO SECTION
+   HERO
 ========================================= */
 .hero {
   min-height: 80vh;
@@ -118,13 +156,14 @@ body::after {
   display: flex;
   flex-direction: column;
   position: relative;
+  z-index: 0;
 }
 
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.85));
+  background: linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.9));
   z-index: -1;
 }
 
@@ -148,7 +187,6 @@ body::after {
 
 .hero-copy p {
   font-size: 1rem;
-  opacity: 0.9;
 }
 
 /* =========================================
@@ -165,41 +203,24 @@ body::after {
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
 }
 
 .bubble-btn.primary {
   background: var(--green-main);
   color: #fff;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.45);
 }
 
 .bubble-btn.secondary {
-  background: rgba(255,255,255,0.1);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.08);
+  color: #f5f5f5;
+  border: 1px solid rgba(255,255,255,0.4);
 }
 
 .bubble-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 26px rgba(0,0,0,0.4);
-}
-
-/* =========================================
-   SUB HEADERS
-========================================= */
-.sub-header {
-  position: relative;
-  color: #fff;
-  padding: 40px 6vw 30px;
-}
-
-.sub-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, rgba(0,0,0,0.7), rgba(0,0,0,0.9));
-  z-index: -1;
+  box-shadow: 0 14px 26px rgba(0,0,0,0.5);
 }
 
 /* =========================================
@@ -207,19 +228,21 @@ body::after {
 ========================================= */
 .section {
   padding: 50px 6vw;
+  position: relative;
+  z-index: 0;
 }
 
 .section.light {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(4px);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(6px);
   border-radius: 16px;
-  margin: 20px auto;
+  margin: 20px 6vw;
 }
 
 .section.dark {
-  background: rgba(0,0,0,0.6);
-  color: #f5f5f5;
+  background: rgba(0,0,0,0.7);
   border-radius: 16px;
+  margin: 20px 6vw;
 }
 
 .section-title {
@@ -238,12 +261,25 @@ body::after {
 }
 
 .card {
-  background: rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.55);
   border-radius: 14px;
   padding: 20px 18px;
-  border: 1px solid rgba(255,255,255,0.2);
-  backdrop-filter: blur(6px);
-  color: #fff;
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(8px);
+}
+
+/* =========================================
+   CTA STRIP
+========================================= */
+.cta-strip {
+  margin-top: 10px;
+}
+
+.cta-strip-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 /* =========================================
@@ -258,7 +294,7 @@ body::after {
 .field label {
   font-size: 0.9rem;
   margin-bottom: 4px;
-  color: #fff;
+  color: #eaeaea;
 }
 
 .field input,
@@ -268,8 +304,8 @@ body::after {
   border: 1px solid var(--border-soft);
   font-size: 0.95rem;
   font-family: inherit;
-  background: rgba(255,255,255,0.15);
-  color: #fff;
+  background: rgba(0,0,0,0.6);
+  color: #f5f5f5;
 }
 
 /* =========================================
@@ -278,7 +314,7 @@ body::after {
 #signaturePad {
   border-radius: 10px;
   border: 1px solid var(--border-soft);
-  background: #fff;
+  background: #ffffff;
   display: block;
   max-width: 100%;
 }
@@ -290,12 +326,8 @@ body::after {
   padding: 18px 6vw 24px;
   font-size: 0.85rem;
   text-align: center;
-  background: #111;
-  color: #eee;
-}
-
-.footer a {
-  color: var(--sky-blue);
+  background: #050607;
+  color: #cfcfcf;
 }
 
 /* =========================================
@@ -306,14 +338,25 @@ body::after {
     flex-wrap: wrap;
     gap: 10px;
   }
+
   .navbar ul {
     flex-wrap: wrap;
     justify-content: center;
   }
+
   .nav-call-btn {
     order: 3;
     width: 100%;
     text-align: center;
     margin-top: 6px;
+  }
+
+  .cta-strip-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-copy h1 {
+    font-size: 2rem;
   }
 }
