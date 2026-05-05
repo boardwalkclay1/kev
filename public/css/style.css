@@ -1,14 +1,20 @@
+/* =========================================
+   GLOBAL VARIABLES — COLOR SCHEME FROM CARD
+========================================= */
 :root {
   --green-main: #1f6b3a;
   --green-soft: #2f8b4a;
   --accent-red: #b7332e;
   --sky-blue: #5fa6d8;
   --cream: #f7f3ea;
-  --dark: #1f2528;
+  --dark: #1a1f1d;
   --text-main: #222;
   --border-soft: #d7d0c2;
 }
 
+/* =========================================
+   GLOBAL RESET + BODY
+========================================= */
 *,
 *::before,
 *::after {
@@ -19,20 +25,37 @@ body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text-main);
-  background: #faf9f6;
+  background: #0f1512;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
 
-/* NAV + HERO */
-
-.hero {
-  min-height: 80vh;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
-              url("../assets/background/logo-bg.png") center/cover no-repeat;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
+/* =========================================
+   GLOBAL BLURRED LOGO BACKGROUND
+========================================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("../public/img/kev-log.png") center/contain no-repeat;
+  opacity: 0.12;              /* fade level */
+  filter: blur(14px);         /* blur strength */
+  transform: scale(1.35);     /* zoom for cinematic feel */
+  z-index: -2;
 }
 
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(0,0,0,0.55), rgba(0,0,0,0.9));
+  z-index: -1;
+}
+
+/* =========================================
+   NAVIGATION
+========================================= */
 .navbar {
   display: flex;
   align-items: center;
@@ -40,22 +63,6 @@ body {
   padding: 14px 6vw;
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(6px);
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.nav-logo {
-  height: 52px;
-}
-
-.brand-text {
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  font-size: 0.9rem;
 }
 
 .navbar ul {
@@ -86,11 +93,23 @@ body {
   font-size: 0.9rem;
 }
 
-.admin-link {
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.4);
-  font-size: 0.8rem;
+/* =========================================
+   HERO SECTION
+========================================= */
+.hero {
+  min-height: 80vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.85));
+  z-index: -1;
 }
 
 .hero-inner {
@@ -116,15 +135,9 @@ body {
   opacity: 0.9;
 }
 
-.hero-actions {
-  margin-top: 24px;
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-}
-
-/* BUTTONS */
-
+/* =========================================
+   BUTTONS
+========================================= */
 .bubble-btn {
   display: inline-flex;
   align-items: center;
@@ -136,7 +149,7 @@ body {
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
 .bubble-btn.primary {
@@ -156,19 +169,41 @@ body {
   box-shadow: 0 14px 26px rgba(0,0,0,0.4);
 }
 
-/* SECTIONS */
+/* =========================================
+   SUB HEADERS (ABOUT, SERVICES, CONTACT)
+========================================= */
+.sub-header {
+  position: relative;
+  color: #fff;
+  padding: 40px 6vw 30px;
+}
 
+.sub-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(0,0,0,0.7), rgba(0,0,0,0.9));
+  z-index: -1;
+}
+
+/* =========================================
+   SECTIONS
+========================================= */
 .section {
   padding: 50px 6vw;
 }
 
 .section.light {
-  background: var(--cream);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(4px);
+  border-radius: 16px;
+  margin: 20px auto;
 }
 
 .section.dark {
-  background: var(--dark);
+  background: rgba(0,0,0,0.6);
   color: #f5f5f5;
+  border-radius: 16px;
 }
 
 .section-title {
@@ -177,13 +212,9 @@ body {
   font-size: 1.6rem;
 }
 
-.section-title.small {
-  text-align: left;
-  font-size: 1.2rem;
-}
-
-/* CARDS */
-
+/* =========================================
+   CARDS
+========================================= */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -191,57 +222,17 @@ body {
 }
 
 .card {
-  background: #fff;
+  background: rgba(255,255,255,0.12);
   border-radius: 14px;
   padding: 20px 18px;
-  border: 1px solid var(--border-soft);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-}
-
-.card.soft {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.18);
-}
-
-/* CTA STRIP */
-
-.cta-strip {
-  background: linear-gradient(90deg, var(--green-main), var(--green-soft));
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(6px);
   color: #fff;
 }
 
-.cta-strip-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* SUB PAGES */
-
-.sub-header {
-  background: linear-gradient(120deg, var(--green-main), var(--sky-blue));
-  color: #fff;
-  padding: 40px 6vw 30px;
-}
-
-.sub-header-inner {
-  max-width: 800px;
-}
-
-.page-main {
-  padding: 30px 6vw 60px;
-}
-
-.section.narrow {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-/* FORMS */
-
+/* =========================================
+   FORMS
+========================================= */
 .field {
   display: flex;
   flex-direction: column;
@@ -251,6 +242,7 @@ body {
 .field label {
   font-size: 0.9rem;
   margin-bottom: 4px;
+  color: #fff;
 }
 
 .field input,
@@ -260,75 +252,13 @@ body {
   border: 1px solid var(--border-soft);
   font-size: 0.95rem;
   font-family: inherit;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
 }
 
-.field-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-}
-
-.hint {
-  font-size: 0.8rem;
-  opacity: 0.7;
-  margin-top: 6px;
-}
-
-/* GALLERY */
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-}
-
-.gallery-item {
-  border-radius: 12px;
-  min-height: 160px;
-  background-size: cover;
-  background-position: center;
-}
-
-.gallery-item.placeholder {
-  background: repeating-linear-gradient(
-    45deg,
-    #e0d7c7,
-    #e0d7c7 10px,
-    #f5eee0 10px,
-    #f5eee0 20px
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6b5b3a;
-  font-size: 0.9rem;
-}
-
-/* ADMIN */
-
-.admin-body {
-  background: #f3f0e7;
-}
-
-.admin-header {
-  background: linear-gradient(120deg, var(--dark), var(--green-main));
-}
-
-.admin-main {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.admin-section {
-  margin-bottom: 24px;
-  border-radius: 16px;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
-}
-
-.signature-block {
-  margin-top: 16px;
-}
-
+/* =========================================
+   SIGNATURE PAD
+========================================= */
 #signaturePad {
   border-radius: 10px;
   border: 1px solid var(--border-soft);
@@ -337,20 +267,9 @@ body {
   max-width: 100%;
 }
 
-.sig-actions {
-  margin-top: 10px;
-  display: flex;
-  gap: 10px;
-}
-
-.admin-actions-row {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-/* FOOTER */
-
+/* =========================================
+   FOOTER
+========================================= */
 .footer {
   padding: 18px 6vw 24px;
   font-size: 0.85rem;
@@ -363,8 +282,9 @@ body {
   color: var(--sky-blue);
 }
 
-/* RESPONSIVE */
-
+/* =========================================
+   RESPONSIVE
+========================================= */
 @media (max-width: 768px) {
   .navbar {
     flex-wrap: wrap;
@@ -379,9 +299,5 @@ body {
     width: 100%;
     text-align: center;
     margin-top: 6px;
-  }
-  .cta-strip-inner {
-    flex-direction: column;
-    text-align: center;
   }
 }
