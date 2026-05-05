@@ -1,0 +1,105 @@
+.admin-top {
+  text-align: center;
+  padding: 40px 0 20px;
+}
+
+.admin-big-logo {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.25));
+  margin-bottom: 10px;
+}
+
+.admin-main {
+  display: flex;
+  gap: 30px;
+  padding: 20px 6vw 60px;
+}
+
+.admin-left {
+  width: 300px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+}
+
+.admin-right {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+}
+
+.admin-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tab-btn {
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--silver);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tab-btn.active {
+  background: var(--green-main);
+  border-color: var(--green-glow);
+}
+
+.doc-editor {
+  width: 100%;
+  height: 300px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 12px;
+  color: #fff;
+  resize: vertical;
+}
+
+.full-btn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.email-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.email-modal-inner {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 30px;
+  border-radius: 16px;
+  width: 600px;
+  max-width: 90%;
+}
+
+.email-modal.show {
+  display: flex;
+}
+
+#emailPreview {
+  white-space: pre-wrap;
+  color: var(--silver);
+  background: rgba(0,0,0,0.4);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
