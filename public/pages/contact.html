@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Kevin’s Tree Service</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="sub-header">
+  <div class="sub-header-inner">
+    <h1>Contact</h1>
+    <p>Call, text, or email anytime.</p>
+  </div>
+</header>
+
+<main class="page-main">
+  <section class="section light narrow">
+    <p><strong>Phone:</strong> <a href="tel:14705156134">470‑515‑6134</a></p>
+    <p><strong>Email:</strong> <a href="mailto:kevinmosley2000@gmail.com">kevinmosley2000@gmail.com</a></p>
+
+    <h2 class="section-title small">Quick message</h2>
+    <form id="contactForm">
+      <div class="field">
+        <label for="cName">Name</label>
+        <input id="cName" type="text" required>
+      </div>
+      <div class="field">
+        <label for="cPhone">Phone</label>
+        <input id="cPhone" type="tel">
+      </div>
+      <div class="field">
+        <label for="cMsg">Message</label>
+        <textarea id="cMsg" rows="4" required></textarea>
+      </div>
+      <button type="button" class="bubble-btn primary" onclick="sendContactEmail()">Send Message</button>
+      <p class="hint">This opens your email app with the message ready to send.</p>
+    </form>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>© 2026 Kevin’s Tree Service LLC</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
