@@ -1,6 +1,12 @@
-// ===============================
-// PAPERWORK TEMPLATES
-// ===============================
+/* ============================================================
+   ADMIN ENGINE v2 — CLEAN, MODULAR, PRODUCTION READY
+   Handles: Templates, Tabs, Email Preview, Weather, Clock,
+   Autosave, Clipboard, Signature Pad, Utilities
+============================================================ */
+
+/* ===============================
+   PAPERWORK TEMPLATES
+=============================== */
 const DOC_TEMPLATES = {
   contract: `TREE WORK SERVICE AGREEMENT
 Kevin’s Tree Service LLC
@@ -22,36 +28,32 @@ Client grants Contractor full access to the property, including driveways, yards
 
 DEBRIS & CLEANUP
 Unless otherwise stated:
-• All brush, limbs, and logs will be removed from the property.
-• Stump grinding is NOT included unless listed as a separate line item.
+• All brush, limbs, and logs will be removed.
+• Stump grinding is NOT included unless listed separately.
 • Raking and surface cleanup will be performed to a reasonable standard.
 
 HAZARDOUS TREE DISCLAIMER
-Trees that are dead, rotted, storm‑damaged, leaning, or structurally compromised may behave unpredictably. Contractor is not responsible for cracking, splitting, or unexpected movement caused by pre‑existing conditions.
+Trees that are dead, rotted, storm‑damaged, leaning, or structurally compromised may behave unpredictably.
 
 DAMAGE WAIVER
 Contractor is not responsible for:
-• Cracks or damage to driveways caused by heavy equipment.
-• Lawn ruts or turf damage caused by necessary equipment access.
-• Damage to unmarked underground utilities, irrigation, or septic systems.
+• Driveway cracks from equipment
+• Lawn ruts
+• Damage to unmarked utilities
 
 PAYMENT TERMS
-• Payment is due in full upon completion of work.
-• Accepted forms: Cash, card, Zelle, or approved payment link.
-• Late payments may incur additional fees.
+Payment due upon completion.
 
 WEATHER & DELAYS
-Work may be rescheduled due to unsafe weather conditions. Contractor will notify the client as soon as possible.
+Work may be rescheduled due to unsafe weather.
 
 CANCELLATION
-Client may cancel up to 24 hours before the scheduled start time. Cancellations within 24 hours may incur a fee.
+Cancellations within 24 hours may incur a fee.
 
 LIABILITY & INSURANCE
-Contractor is fully insured. Client agrees to indemnify Contractor against claims arising from unsafe site conditions not disclosed prior to work.
+Contractor is fully insured.
 
 SIGNATURES
-By signing below, both parties agree to the terms of this agreement.
-
 Client Signature: ___________________________   Date: ____________
 Contractor Signature: ________________________   Date: ____________`,
 
@@ -76,14 +78,11 @@ Debris Removal: $__________
 Total Estimate: $__________
 
 NOTES
-• This estimate is based on visible conditions at the time of inspection.
-• Hidden rot, storm damage, or structural issues may affect final pricing.
-• Stump grinding is not included unless listed above.
+• Estimate based on visible conditions.
+• Hidden rot or storm damage may affect pricing.
+• Stump grinding not included unless listed.
 
-VALIDITY
-This estimate is valid for 14 days.
-
-Client Approval: _____________________________   Date: ____________`,
+VALID FOR 14 DAYS.`,
 
   invoice: `INVOICE
 Kevin’s Tree Service LLC
@@ -109,15 +108,7 @@ Debris Removal: $__________
 Total Amount Due: $__________
 
 PAYMENT TERMS
-• Payment due upon completion.
-• Accepted: Cash, card, Zelle, or payment link.
-• Late payments may incur fees.
-
-NOTES
-____________________________________________
-____________________________________________
-
-Thank you for choosing Kevin’s Tree Service LLC!`,
+Payment due upon completion.`,
 
   proposal: `TREE WORK PROPOSAL
 Kevin’s Tree Service LLC
@@ -129,49 +120,31 @@ Job Address: _______________________________
 Date: ___________________
 
 RECOMMENDED WORK
-Based on our inspection, we recommend the following:
 • __________________________________________
 • __________________________________________
 • __________________________________________
 
 BENEFITS
-• Improved safety around home and structures.
-• Reduced storm‑related risk.
-• Healthier tree structure and canopy.
-• Increased yard space and sunlight.
+• Increased safety
+• Reduced storm risk
+• Healthier canopy
+• More sunlight
 
-PROJECT COST
-Estimated Total: $__________
+ESTIMATED TOTAL: $__________
 
-TIMELINE
-Work can be scheduled within ___ days of approval.
-
-ACCEPTANCE
-Client Signature: ___________________________   Date: ____________`
+Client Signature: ___________________________`
 };
 
-// ===============================
-// HELPERS
-// ===============================
-function v(id) {
-  const el = document.getElementById(id);
-  return el ? el.value.trim() : "";
-}
+/* ===============================
+   SHORTCUTS
+=============================== */
+const $ = id => document.getElementById(id);
 
-function setV(id, value) {
-  const el = document.getElementById(id);
-  if (el) el.value = value;
-}
-
-// ===============================
-// TABS + TEMPLATE LOADING
-// ===============================
-function initAdminTabs() {
+/* ===============================
+   TAB SYSTEM
+=============================== */
+function initTabs() {
   const buttons = document.querySelectorAll(".tab-btn");
-  const docBody = document.getElementById("docBody");
-  const docTitle = document.getElementById("docTitle");
-
-  if (!buttons.length || !docBody || !docTitle) return;
 
   buttons.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -179,134 +152,137 @@ function initAdminTabs() {
       btn.classList.add("active");
 
       const type = btn.dataset.tab;
-      docTitle.textContent = type.charAt(0).toUpperCase() + type.slice(1);
-      setV("docBody", DOC_TEMPLATES[type] || "");
+      $("docTitle").textContent = type.charAt(0).toUpperCase() + type.slice(1);
+      $("docBody").value = DOC_TEMPLATES[type];
+
+      saveDraft();
     });
   });
 
-  // Load default (contract)
-  setV("docBody", DOC_TEMPLATES.contract);
+  // Load default
+  $("docBody").value = DOC_TEMPLATES.contract;
 }
 
-// ===============================
-// EMAIL PREVIEW + SEND
-// ===============================
+/* ===============================
+   EMAIL PREVIEW
+=============================== */
 function openEmailPreview() {
-  const name = v("clientName");
-  const email = v("clientEmail");
-  const address = v("clientAddress");
-  const body = v("docBody");
-  const title = document.getElementById("docTitle")?.textContent || "Document";
-
   const preview = `
-Type: ${title}
+Type: ${$("docTitle").textContent}
 
-Client: ${name}
-Email: ${email}
-Address: ${address}
+Client: ${$("clientName").value}
+Email: ${$("clientEmail").value}
+Address: ${$("clientAddress").value}
 
 --- DOCUMENT ---
 
-${body}
+${$("docBody").value}
   `.trim();
 
-  const modal = document.getElementById("emailModal");
-  const previewEl = document.getElementById("emailPreview");
-  if (!modal || !previewEl) return;
-
-  previewEl.textContent = preview;
-  modal.classList.add("show");
+  $("emailPreview").textContent = preview;
+  $("emailModal").classList.add("show");
 }
 
 function closeEmailPreview() {
-  document.getElementById("emailModal")?.classList.remove("show");
+  $("emailModal").classList.remove("show");
 }
 
 function sendFinalEmail() {
-  const email = v("clientEmail") || "kevinmosley2000@gmail.com";
-  const title = document.getElementById("docTitle")?.textContent || "Tree Work Document";
-  const body = v("docBody");
+  const email = $("clientEmail").value || "kevinmosley2000@gmail.com";
+  const subject = encodeURIComponent($("docTitle").textContent);
+  const body = encodeURIComponent($("docBody").value);
 
-  const subject = encodeURIComponent(`${title} — Kevin’s Tree Service`);
-  const encodedBody = encodeURIComponent(body);
-
-  window.location.href = `mailto:${email}?subject=${subject}&body=${encodedBody}`;
+  window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
 }
 
-// ===============================
-// QUICK UTILITIES
-// ===============================
+/* ===============================
+   UTILITIES
+=============================== */
 function insertTimestamp() {
-  const el = document.getElementById("docBody");
-  if (!el) return;
-  const stamp = `\n\nGenerated: ${new Date().toLocaleString()}`;
-  el.value += stamp;
+  $("docBody").value += `\n\nGenerated: ${new Date().toLocaleString()}`;
+  saveDraft();
 }
 
 function copyDocToClipboard() {
-  const body = v("docBody");
-  if (!body) return;
-  navigator.clipboard.writeText(body).then(() => {
-    alert("Document copied to clipboard.");
-  });
+  navigator.clipboard.writeText($("docBody").value);
+  alert("Document copied.");
 }
 
-// ===============================
-// ATLANTA WEATHER (ACCURATE °F)
-// ===============================
-async function adminLoadAtlantaWeather() {
-  const weatherEl = document.getElementById("atlWeather");
-  const clockEl = document.getElementById("atlClock");
-  if (!weatherEl || !clockEl) return;
+/* ===============================
+   AUTOSAVE
+=============================== */
+function saveDraft() {
+  const draft = {
+    type: $("docTitle").textContent,
+    body: $("docBody").value,
+    name: $("clientName").value,
+    email: $("clientEmail").value,
+    address: $("clientAddress").value
+  };
+
+  localStorage.setItem("adminDraft", JSON.stringify(draft));
+}
+
+function loadDraft() {
+  const draft = JSON.parse(localStorage.getItem("adminDraft") || "{}");
+  if (!draft.body) return;
+
+  $("docTitle").textContent = draft.type || "Contract";
+  $("docBody").value = draft.body || DOC_TEMPLATES.contract;
+  $("clientName").value = draft.name || "";
+  $("clientEmail").value = draft.email || "";
+  $("clientAddress").value = draft.address || "";
+}
+
+/* ===============================
+   ATLANTA WEATHER (ACCURATE °F)
+=============================== */
+async function loadAtlantaWeather() {
+  const weatherEl = $("atlWeather");
+  const clockEl = $("atlClock");
 
   // Clock
-  function updateClock() {
-    const now = new Date();
-    const options = { hour: "2-digit", minute: "2-digit", second: "2-digit" };
-    clockEl.textContent = now.toLocaleTimeString("en-US", options);
-  }
-  updateClock();
-  setInterval(updateClock, 1000);
+  setInterval(() => {
+    clockEl.textContent = new Date().toLocaleTimeString("en-US");
+  }, 1000);
 
-  // Weather in Fahrenheit
-  const lat = 33.749;
-  const lng = -84.388;
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current_weather=true&temperature_unit=fahrenheit&timezone=auto`;
-
+  // Weather
   try {
-    const res = await fetch(url);
+    const res = await fetch(
+      "https://api.open-meteo.com/v1/forecast?latitude=33.749&longitude=-84.388&current_weather=true&temperature_unit=fahrenheit&timezone=auto"
+    );
+
     const data = await res.json();
     const w = data.current_weather;
-    const temp = Math.round(w.temperature);
-    const cond = adminCodeToText(w.weathercode);
-    weatherEl.textContent = `${cond}, ${temp}°F`;
+
+    const map = {
+      0: "Clear",
+      1: "Mainly Clear",
+      2: "Partly Cloudy",
+      3: "Cloudy",
+      45: "Fog",
+      48: "Fog",
+      51: "Light Drizzle",
+      61: "Rain",
+      63: "Rain",
+      65: "Heavy Rain",
+      71: "Snow",
+      95: "Thunderstorm"
+    };
+
+    weatherEl.textContent = `${map[w.weathercode] || "Weather"}, ${Math.round(
+      w.temperature
+    )}°F`;
   } catch {
     weatherEl.textContent = "Weather unavailable";
   }
 }
 
-function adminCodeToText(code) {
-  const map = {
-    0: "Clear",
-    1: "Mainly Clear",
-    2: "Partly Cloudy",
-    3: "Cloudy",
-    45: "Fog",
-    48: "Fog",
-    51: "Light Drizzle",
-    61: "Rain",
-    63: "Rain",
-    65: "Heavy Rain",
-    71: "Snow",
-    95: "Thunderstorm"
-  };
-  return map[code] || "Weather";
-}
-
-// ===============================
-// INIT
-// ===============================
+/* ===============================
+   INIT
+=============================== */
 document.addEventListener("DOMContentLoaded", () => {
-  initAdminTabs();
-  adminLoadAtlantaWeather();
+  initTabs();
+  loadDraft();
+  loadAtlantaWeather();
 });
