@@ -10,7 +10,10 @@
 <header class="sub-header admin-header">
   <div class="sub-header-inner">
     <h1>Admin Dashboard</h1>
-    <p>Create contracts, invoices, receipts, and payment links.</p>
+    <p>Contracts, invoices, receipts, and live weather/time for Atlanta, GA.</p>
+    <div class="weather-time">
+      <span id="atlClock"></span> • <span id="atlWeather"></span>
+    </div>
   </div>
 </header>
 
@@ -61,10 +64,8 @@ Signature:
         <button type="button" class="bubble-btn secondary" onclick="clearSignature()">Clear</button>
         <button type="button" class="bubble-btn primary" onclick="downloadSignature()">Download Signed Image</button>
       </div>
-      <p class="hint">Client signs on your phone/tablet. Download the image and attach it to the contract email.</p>
     </div>
     <button type="button" class="bubble-btn primary" onclick="openContractEmail()">Email Contract to Client</button>
-    <p class="hint">Opens your email app with the contract text and client email filled in.</p>
   </section>
 
   <section class="section light admin-section">
@@ -88,7 +89,7 @@ Signature:
 
   <section class="section light admin-section">
     <h2 class="section-title small">Payment Link</h2>
-    <p class="hint">Use a Stripe / PayPal / Cash App link here. This page just helps you send it fast.</p>
+    <p class="hint">Paste your Stripe, PayPal, or Cash App link here.</p>
     <div class="field">
       <label for="paymentLink">Payment URL</label>
       <input id="paymentLink" type="url" placeholder="https://…">
