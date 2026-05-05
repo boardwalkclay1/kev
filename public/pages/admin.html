@@ -4,27 +4,79 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin — Kevin’s Tree Service</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/public/img/kev-log.png">
+
+  <!-- Social Preview -->
+  <meta property="og:title" content="Kevin’s Tree Service Admin Dashboard">
+  <meta property="og:description" content="Create contracts, invoices, estimates, proposals, and signatures.">
+  <meta property="og:image" content="/public/img/kev-log.png">
+  <meta property="og:type" content="website">
+
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body class="admin-body">
 
+<!-- ============================
+     NAVIGATION + BURGER MENU
+============================= -->
+<nav class="navbar">
+  <div class="brand">
+    <img src="/public/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
+    <span class="brand-text silver-text">KEVIN’S TREE SERVICE LLC</span>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="/index.html" class="silver-text">Home</a></li>
+    <li><a href="/pages/services.html" class="silver-text">Services</a></li>
+    <li><a href="/pages/gallery.html" class="silver-text">Gallery</a></li>
+    <li><a href="/pages/about.html" class="silver-text">About</a></li>
+    <li><a href="/pages/estimate.html" class="silver-text">Free Estimate</a></li>
+    <li><a href="/pages/contact.html" class="silver-text">Contact</a></li>
+    <li><a href="/pages/admin.html" class="active silver-text">Admin</a></li>
+  </ul>
+
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
+  <a href="javascript:history.back()" class="mobile-back silver-text">← Back</a>
+  <a href="/index.html">Home</a>
+  <a href="/pages/services.html">Services</a>
+  <a href="/pages/gallery.html">Gallery</a>
+  <a href="/pages/about.html">About</a>
+  <a href="/pages/estimate.html">Free Estimate</a>
+  <a href="/pages/contact.html">Contact</a>
+  <a href="/pages/admin.html" class="active">Admin</a>
+</div>
+
+<!-- ============================
+     ADMIN HEADER
+============================= -->
 <header class="admin-header">
   <div class="admin-header-inner">
-    <h1>Kevin’s Admin Dashboard</h1>
-    <p>Contracts • Estimates • Invoices • Proposals</p>
+    <h1 class="silver-text">Kevin’s Admin Dashboard</h1>
+    <p class="silver-soft">Contracts • Estimates • Invoices • Proposals</p>
 
-    <div class="weather-time">
+    <div class="weather-time silver-text">
       <span id="atlClock"></span> • <span id="atlWeather"></span>
     </div>
   </div>
 </header>
 
+<!-- ============================
+     MAIN ADMIN LAYOUT
+============================= -->
 <main class="admin-container">
 
   <!-- LEFT SIDEBAR -->
   <aside class="admin-sidebar">
-    <h3>Document Type</h3>
+    <h3 class="silver-text">Document Type</h3>
 
     <select id="docType" onchange="switchDocType()">
       <option value="contract">Contract</option>
@@ -33,20 +85,23 @@
       <option value="proposal">Proposal</option>
     </select>
 
-    <h3>Instructions</h3>
-    <div id="instructionsBox" class="instructions-box">
+    <h3 class="silver-text">Instructions</h3>
+    <div id="instructionsBox" class="instructions-box silver-soft">
       Select a document type to view instructions.
     </div>
 
-    <h3>Client Info</h3>
+    <h3 class="silver-text">Client Info</h3>
+
     <div class="field">
       <label>Client Name</label>
       <input id="clientName" type="text">
     </div>
+
     <div class="field">
       <label>Client Email</label>
       <input id="clientEmail" type="email">
     </div>
+
     <div class="field">
       <label>Job Address</label>
       <input id="clientAddress" type="text">
@@ -58,11 +113,12 @@
   <!-- MAIN DOCUMENT PANEL -->
   <section class="admin-doc-panel">
 
-    <h2 id="docTitle">Contract</h2>
+    <h2 id="docTitle" class="silver-text">Contract</h2>
 
     <textarea id="docBody" class="doc-body"></textarea>
 
-    <h3>Client Signature</h3>
+    <h3 class="silver-text">Client Signature</h3>
+
     <canvas id="signaturePad" width="600" height="200"></canvas>
 
     <div class="sig-actions">
@@ -75,9 +131,16 @@
 </main>
 
 <footer class="footer">
-  <p>Admin • Kevin’s Tree Service LLC</p>
+  <p class="silver-soft">Admin • Kevin’s Tree Service LLC</p>
 </footer>
 
 <script src="/js/app.js"></script>
+
+<script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("open");
+}
+</script>
+
 </body>
 </html>
