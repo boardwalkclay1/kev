@@ -2,15 +2,14 @@
    ROOT VARIABLES — CINEMATIC PALETTE
 ========================================= */
 :root {
-  --silver: #dcdcdc;
-  --silver-soft: #bfbfbf;
+  --silver: #e5e5e5;
+  --silver-soft: #c7c7c7;
   --green-main: #1f6b3a;
   --green-glow: #2fa85a;
   --accent-red: #b7332e;
-  --sky-blue: #5fa6d8;
   --dark: #050607;
-  --panel: rgba(255,255,255,0.05);
-  --panel-border: rgba(255,255,255,0.15);
+  --panel: rgba(255,255,255,0.06);
+  --panel-border: rgba(255,255,255,0.18);
 }
 
 /* =========================================
@@ -43,7 +42,7 @@ body::before {
   background: url("../public/img/kev-log.png") center/contain no-repeat;
   opacity: 0.12;
   filter: blur(18px);
-  transform: scale(1.3);
+  transform: scale(1.25);
   z-index: -3;
   pointer-events: none;
 }
@@ -52,32 +51,34 @@ body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at top, rgba(0,0,0,0.6), rgba(0,0,0,0.95));
+  background: radial-gradient(circle at top, rgba(0,0,0,0.55), rgba(0,0,0,0.95));
   z-index: -2;
   pointer-events: none;
 }
 
 /* =========================================
-   FALLING LEAVES ANIMATION
+   CHAINSAW SPARK PARTICLES
 ========================================= */
-@keyframes leafFall {
-  0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-  20% { opacity: 1; }
-  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+@keyframes sparks {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(120vh) translateX(40px) rotate(360deg); opacity: 0; }
 }
 
-.leaf {
+.spark {
   position: fixed;
-  top: -10vh;
-  width: 24px;
-  height: 24px;
-  background: url("../public/img/leaf.png") center/contain no-repeat;
-  opacity: 0.8;
-  animation: leafFall linear infinite;
+  top: -20px;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(45deg, #ffcc66, #ff3300);
+  border-radius: 50%;
+  filter: blur(1px);
+  animation: sparks linear infinite;
   z-index: -1;
   pointer-events: none;
 }
 
-/* Generate 12 leaves */
-body::before,
-body::after {}
+/* Generate 20 sparks */
+body {
+  counter-reset: sparks 20;
+}
