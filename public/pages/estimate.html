@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Estimate — Kevin’s Tree Service</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="sub-header">
+  <div class="sub-header-inner">
+    <h1>Request a Free Estimate</h1>
+    <p>Describe your trees and we’ll respond quickly.</p>
+  </div>
+</header>
+
+<main class="page-main">
+  <!-- mailto keeps this static; opens client’s email app with prefilled body -->
+  <section class="section light narrow">
+    <form id="estimateForm">
+      <div class="field">
+        <label for="estName">Name</label>
+        <input id="estName" type="text" required>
+      </div>
+      <div class="field">
+        <label for="estPhone">Phone</label>
+        <input id="estPhone" type="tel" required>
+      </div>
+      <div class="field">
+        <label for="estAddress">Address (city / area)</label>
+        <input id="estAddress" type="text">
+      </div>
+      <div class="field">
+        <label for="estDetails">Describe the work</label>
+        <textarea id="estDetails" rows="5" required></textarea>
+      </div>
+      <button type="button" class="bubble-btn primary" onclick="sendEstimateEmail()">Send Estimate Request</button>
+      <p class="hint">This will open your email app with everything filled in—just press send.</p>
+    </form>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>© 2026 Kevin’s Tree Service LLC</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
