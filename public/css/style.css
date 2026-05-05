@@ -272,3 +272,24 @@ body::after {
   text-align: center;
   color: var(--silver-soft);
 }
+.nav-logo {
+  height: 140px;      /* Bigger logo */
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+}
+
+/* Keep brand aligned with bigger logo */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Ensure navbar stays clean with larger logo */
+.navbar {
+  position: relative;
+  z-index: 10;
+  padding: 12px 4vw;
+}
