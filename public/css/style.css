@@ -33,7 +33,7 @@ html, body {
 }
 
 /* =========================================
-   LOCKED BLURRED LOGO BACKGROUND
+   BACKGROUND LOGO
 ========================================= */
 body::before {
   content: "";
@@ -44,7 +44,6 @@ body::before {
   filter: blur(18px);
   transform: scale(1.25);
   z-index: -3;
-  pointer-events: none;
 }
 
 body::after {
@@ -53,11 +52,10 @@ body::after {
   inset: 0;
   background: radial-gradient(circle at top, rgba(0,0,0,0.55), rgba(0,0,0,0.95));
   z-index: -2;
-  pointer-events: none;
 }
 
 /* =========================================
-   CHAINSAW SPARK PARTICLES
+   SPARK PARTICLES
 ========================================= */
 @keyframes sparks {
   0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
@@ -75,10 +73,202 @@ body::after {
   filter: blur(1px);
   animation: sparks linear infinite;
   z-index: -1;
-  pointer-events: none;
 }
 
-/* Generate 20 sparks */
-body {
-  counter-reset: sparks 20;
+/* =========================================
+   SILVER TEXT
+========================================= */
+.silver-text {
+  color: var(--silver);
+  text-shadow: 0 0 6px rgba(255,255,255,0.25);
+  font-weight: 600;
+}
+
+.silver-soft {
+  color: var(--silver-soft);
+  text-shadow: 0 0 4px rgba(255,255,255,0.15);
+}
+
+/* =========================================
+   NAVIGATION
+========================================= */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 6vw;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  position: relative;
+  z-index: 10;
+}
+
+.nav-logo {
+  width: 42px;
+  height: 42px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: var(--silver);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--green-glow);
+}
+
+.nav-links a.active {
+  border-bottom: 2px solid var(--green-glow);
+}
+
+/* BURGER MENU */
+.burger {
+  width: 28px;
+  cursor: pointer;
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.burger span {
+  height: 3px;
+  width: 100%;
+  background: var(--silver);
+  border-radius: 4px;
+}
+
+/* MOBILE MENU */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(10px);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: 0.3s ease;
+  z-index: 9999;
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-menu a {
+  color: var(--silver);
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.mobile-back {
+  margin-bottom: 20px;
+}
+
+/* SHOW BURGER ON MOBILE */
+@media (max-width: 900px) {
+  .burger { display: flex; }
+  .nav-links { display: none; }
+}
+
+/* =========================================
+   HERO
+========================================= */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 6vw;
+  text-align: center;
+}
+
+.hero-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+.bubble-btn {
+  padding: 12px 26px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.bubble-btn.primary {
+  background: var(--green-main);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(0,255,0,0.25);
+}
+
+.bubble-btn.secondary {
+  background: rgba(255,255,255,0.1);
+  color: var(--silver);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.bubble-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   SECTIONS
+========================================= */
+.section {
+  padding: 50px 6vw;
+  margin: 20px 0;
+}
+
+.section.light {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+}
+
+.section.dark {
+  background: rgba(0,0,0,0.7);
+  border-radius: 16px;
+}
+
+/* =========================================
+   CARDS
+========================================= */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: rgba(0,0,0,0.55);
+  border: 1px solid var(--panel-border);
+  padding: 20px;
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+.footer {
+  padding: 20px;
+  text-align: center;
+  color: var(--silver-soft);
 }
