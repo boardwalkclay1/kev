@@ -8,12 +8,12 @@
   --sky-blue: #5fa6d8;
   --cream: #f7f3ea;
   --dark: #1a1f1d;
-  --text-main: #222;
+  --text-main: #ffffff;
   --border-soft: #d7d0c2;
 }
 
 /* =========================================
-   GLOBAL RESET + BODY
+   RESET + BODY
 ========================================= */
 *,
 *::before,
@@ -32,25 +32,41 @@ body {
 }
 
 /* =========================================
-   GLOBAL BLURRED LOGO BACKGROUND
+   LOCKED BLURRED LOGO BACKGROUND
 ========================================= */
 body::before {
   content: "";
   position: fixed;
-  inset: 0;
-  background: url("../public/img/kev-log.png") center/contain no-repeat;
-  opacity: 0.12;              /* fade level */
-  filter: blur(14px);         /* blur strength */
-  transform: scale(1.35);     /* zoom for cinematic feel */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url("../public/img/kev-log.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  opacity: 0.14;
+  filter: blur(18px);
+  transform: scale(1.25);
+
   z-index: -2;
+  pointer-events: none;
 }
 
 body::after {
   content: "";
   position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at top, rgba(0,0,0,0.55), rgba(0,0,0,0.9));
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background: radial-gradient(circle at top, rgba(0,0,0,0.55), rgba(0,0,0,0.92));
+
   z-index: -1;
+  pointer-events: none;
 }
 
 /* =========================================
@@ -74,7 +90,7 @@ body::after {
 }
 
 .navbar a {
-  color: #fdfdfd;
+  color: #ffffff;
   text-decoration: none;
   font-size: 0.9rem;
 }
@@ -170,7 +186,7 @@ body::after {
 }
 
 /* =========================================
-   SUB HEADERS (ABOUT, SERVICES, CONTACT)
+   SUB HEADERS
 ========================================= */
 .sub-header {
   position: relative;
