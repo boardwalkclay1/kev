@@ -4,30 +4,119 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery — Kevin’s Tree Service</title>
-  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/public/img/kev-log.png">
+
+  <!-- Social Preview -->
+  <meta property="og:title" content="Kevin’s Tree Service — Before & After Gallery">
+  <meta property="og:description" content="See real before & after results from Kevin’s Tree Service.">
+  <meta property="og:image" content="/public/img/kev-log.png">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
+
+<!-- ============================
+     NAVIGATION + BURGER MENU
+============================= -->
+<nav class="navbar">
+  <div class="brand">
+    <img src="/public/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
+    <span class="brand-text silver-text">KEVIN’S TREE SERVICE LLC</span>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="/index.html" class="silver-text">Home</a></li>
+    <li><a href="/pages/services.html" class="silver-text">Services</a></li>
+    <li><a href="/pages/gallery.html" class="active silver-text">Gallery</a></li>
+    <li><a href="/pages/about.html" class="silver-text">About</a></li>
+    <li><a href="/pages/estimate.html" class="silver-text">Free Estimate</a></li>
+    <li><a href="/pages/contact.html" class="silver-text">Contact</a></li>
+    <li><a href="/pages/admin.html" class="silver-text">Admin</a></li>
+  </ul>
+
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
+  <a href="javascript:history.back()" class="mobile-back silver-text">← Back</a>
+  <a href="/index.html">Home</a>
+  <a href="/pages/services.html">Services</a>
+  <a href="/pages/gallery.html" class="active">Gallery</a>
+  <a href="/pages/about.html">About</a>
+  <a href="/pages/estimate.html">Free Estimate</a>
+  <a href="/pages/contact.html">Contact</a>
+  <a href="/pages/admin.html">Admin</a>
+</div>
+
+<!-- ============================
+     PAGE HEADER
+============================= -->
 <header class="sub-header">
   <div class="sub-header-inner">
-    <h1>Before & After</h1>/
-    <p>Sample work from recent jobs.</p>
+    <h1 class="silver-text">Before & After</h1>
+    <p class="silver-soft">Real results from real jobs.</p>
   </div>
 </header>
 
+<!-- ============================
+     MAIN CONTENT
+============================= -->
 <main class="page-main">
+
   <section class="section light">
-    <div class="gallery-grid">
-      <div class="gallery-item placeholder">Before / After 1</div>
-      <div class="gallery-item placeholder">Before / After 2</div>
-      <div class="gallery-item placeholder">Before / After 3</div>
-      <div class="gallery-item placeholder">Before / After 4</div>
+    <h2 class="section-title silver-text">Recent Work</h2>
+
+    <div class="gallery-grid expanded-gallery">
+
+      <div class="gallery-item placeholder">
+        <span>Before / After 1</span>
+      </div>
+
+      <div class="gallery-item placeholder">
+        <span>Before / After 2</span>
+      </div>
+
+      <div class="gallery-item placeholder">
+        <span>Before / After 3</span>
+      </div>
+
+      <div class="gallery-item placeholder">
+        <span>Before / After 4</span>
+      </div>
+
+      <div class="gallery-item placeholder">
+        <span>Before / After 5</span>
+      </div>
+
+      <div class="gallery-item placeholder">
+        <span>Before / After 6</span>
+      </div>
+
     </div>
-    <p class="hint">Replace these blocks with real job photos when you’re ready.</p>
+
+    <p class="hint silver-soft">
+      Replace these placeholders with real before/after photos when you're ready.
+    </p>
   </section>
+
 </main>
 
 <footer class="footer">
-  <p>© 2026 Kevin’s Tree Service LLC</p>
+  <p class="silver-soft">© 2026 Kevin’s Tree Service LLC</p>
 </footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("open");
+}
+</script>
+
 </body>
 </html>
