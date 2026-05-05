@@ -1,41 +1,53 @@
-// Basic console ping
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Kevin’s Tree Service site loaded");
-});
+// CLOCK + WEATHER FOR ATLANTA
+async function loadAtlantaWeather() {
+  const weatherEl = document.getElementById("atlWeather");
+  const clockEl = document.getElementById("atlClock");
 
-/* ESTIMATE EMAIL (mailto) */
+  // Clock
+  function updateClock() {
+    const now = new Date();
+    const options = { hour: "2-digit", minute: "2-digit", second: "2-digit" };
+    clockEl.textContent = now.toLocaleTimeString("en-US", options);
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
 
-function sendEstimateEmail() {
-  const name = document.getElementById("estName").value.trim();
-  const phone = document.getElementById("estPhone").value.trim();
-  const address = document.getElementById("estAddress").value.trim();
-  const details = document.getElementById("estDetails").value.trim();
+  // Weather (Open-Meteo API)
+  const lat = 33.749; // Atlanta latitude
+  const lng = -84.388; // Atlanta longitude
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current_weather=true&timezone=auto`;
 
-  const subject = encodeURIComponent("Tree Service Estimate Request");
-  const body = encodeURIComponent(
-    `Name: ${name}\nPhone: ${phone}\nAddress/Area: ${address}\n\nWork details:\n${details}`
-  );
-
-  window.location.href = `mailto:kevinmosley2000@gmail.com?subject=${subject}&body=${body}`;
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    const w = data.current_weather;
+    const temp = Math.round(w.temperature);
+    const cond = codeToText(w.weathercode);
+    weatherEl.textContent = `${cond}, ${temp}°F`;
+  } catch {
+    weatherEl.textContent = "Weather unavailable";
+  }
 }
 
-/* CONTACT EMAIL (mailto) */
-
-function sendContactEmail() {
-  const name = document.getElementById("cName").value.trim();
-  const phone = document.getElementById("cPhone").value.trim();
-  const msg = document.getElementById("cMsg").value.trim();
-
-  const subject = encodeURIComponent("Tree Service Message from Website");
-  const body = encodeURIComponent(
-    `Name: ${name}\nPhone: ${phone}\n\nMessage:\n${msg}`
-  );
-
-  window.location.href = `mailto:kevinmosley2000@gmail.com?subject=${subject}&body=${body}`;
+function codeToText(code) {
+  const map = {
+    0: "Clear",
+    1: "Mainly Clear",
+    2: "Partly Cloudy",
+    3: "Cloudy",
+    45: "Fog",
+    48: "Fog",
+    51: "Light Drizzle",
+    61: "Rain",
+    63: "Rain",
+    65: "Heavy Rain",
+    71: "Snow",
+    95: "Thunderstorm"
+  };
+  return map[code] || "Weather";
 }
 
-/* SIGNATURE PAD (canvas) */
-
+// Signature Pad
 let sigPad, sigCtx, drawing = false, lastX = 0, lastY = 0;
 
 function initSignaturePad() {
@@ -46,11 +58,7 @@ function initSignaturePad() {
   sigCtx.lineWidth = 2;
   sigCtx.lineCap = "round";
 
-  const start = (x, y) => {
-    drawing = true;
-    [lastX, lastY] = [x, y];
-  };
-
+  const start = (x, y) => { drawing = true; [lastX, lastY] = [x, y]; };
   const draw = (x, y) => {
     if (!drawing) return;
     sigCtx.beginPath();
@@ -59,7 +67,6 @@ function initSignaturePad() {
     sigCtx.stroke();
     [lastX, lastY] = [x, y];
   };
-
   const stop = () => (drawing = false);
 
   sigPad.addEventListener("mousedown", e => start(e.offsetX, e.offsetY));
@@ -81,10 +88,7 @@ function initSignaturePad() {
     draw(t.clientX - rect.left, t.clientY - rect.top);
   }, { passive: false });
 
-  sigPad.addEventListener("touchend", e => {
-    e.preventDefault();
-    stop();
-  }, { passive: false });
+  sigPad.addEventListener("touchend", e => { e.preventDefault(); stop(); }, { passive: false });
 }
 
 function clearSignature() {
@@ -100,67 +104,10 @@ function downloadSignature() {
   link.click();
 }
 
-/* CONTRACT EMAIL */
-
+// Email helpers
 function openContractEmail() {
   const clientName = document.getElementById("clientName").value.trim();
   const clientEmail = document.getElementById("clientEmail").value.trim();
-  const clientAddress = document.getElementById("clientAddress").value.trim();
   const contractText = document.getElementById("contractBody").value;
-
   const subject = encodeURIComponent(`Tree Work Agreement — ${clientName || "Client"}`);
-  const body = encodeURIComponent(
-    `Client: ${clientName}\nEmail: ${clientEmail}\nAddress: ${clientAddress}\n\n--- CONTRACT ---\n\n${contractText}\n\n(Attach the signed image file if available.)`
-  );
-
-  const to = clientEmail || "kevinmosley2000@gmail.com";
-  window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-}
-
-/* INVOICE / RECEIPT EMAIL */
-
-function openInvoiceEmail() {
-  const clientName = document.getElementById("clientName").value.trim();
-  const clientEmail = document.getElementById("clientEmail").value.trim();
-  const invoiceNumber = document.getElementById("invoiceNumber").value.trim();
-  const amount = document.getElementById("invoiceAmount").value.trim();
-  const notes = document.getElementById("invoiceNotes").value.trim();
-
-  const subject = encodeURIComponent(`Invoice ${invoiceNumber || ""} — Kevin’s Tree Service`);
-  const body = encodeURIComponent(
-    `Client: ${clientName}\nInvoice #: ${invoiceNumber}\nAmount: $${amount}\n\nNotes:\n${notes}\n\nThank you for your business!`
-  );
-
-  const to = clientEmail || "kevinmosley2000@gmail.com";
-  window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-}
-
-/* PAYMENT LINK HELPERS */
-
-function copyPaymentLink() {
-  const link = document.getElementById("paymentLink").value.trim();
-  if (!link) return;
-  navigator.clipboard?.writeText(link).then(() => {
-    alert("Payment link copied.");
-  }).catch(() => {
-    alert("Copy failed. You can select and copy the link manually.");
-  });
-}
-
-function openPaymentEmail() {
-  const clientName = document.getElementById("clientName").value.trim();
-  const clientEmail = document.getElementById("clientEmail").value.trim();
-  const link = document.getElementById("paymentLink").value.trim();
-
-  const subject = encodeURIComponent(`Payment Link — Kevin’s Tree Service`);
-  const body = encodeURIComponent(
-    `Hi ${clientName || ""},\n\nYou can pay securely using this link:\n${link}\n\nThank you!\nKevin’s Tree Service LLC`
-  );
-
-  const to = clientEmail || "kevinmosley2000@gmail.com";
-  window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-}
-
-/* INIT */
-
-document.addEventListener("DOMContentLoaded", initSignaturePad);
+  const body = encode
