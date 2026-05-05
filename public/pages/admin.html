@@ -5,26 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin — Kevin’s Tree Service</title>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/img/kev-log.png">
-
-  <!-- Social Preview -->
-  <meta property="og:title" content="Kevin’s Tree Service Admin Dashboard">
-  <meta property="og:description" content="Create contracts, invoices, estimates, proposals, and signatures.">
-  <meta property="og:image" content="/img/kev-log.png">
-  <meta property="og:type" content="website">
-
+  <link rel="icon" type="image/png" href="/public/img/kev-log.png">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/admin.css">
 </head>
 
 <body class="admin-body">
 
-<!-- ============================
-     NAVIGATION + BURGER MENU
-============================= -->
+<!-- SPARK PARTICLES -->
+<div id="sparkContainer"></div>
+
+<!-- NAVIGATION -->
 <nav class="navbar">
   <div class="brand">
-    <img src="/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
+    <img src="/public/img/kev-log.png" class="nav-logo">
     <span class="brand-text silver-text">KEVIN’S TREE SERVICE LLC</span>
   </div>
 
@@ -55,70 +49,61 @@
   <a href="/pages/admin.html" class="active">Admin</a>
 </div>
 
-<!-- ============================
-     ADMIN HEADER
-============================= -->
-<header class="admin-header">
-  <div class="admin-header-inner">
-    <h1 class="silver-text">Kevin’s Admin Dashboard</h1>
-    <p class="silver-soft">Contracts • Estimates • Invoices • Proposals</p>
+<!-- FULL LOGO HEADER -->
+<header class="admin-top">
+  <img src="/public/img/kev-log.png" class="admin-big-logo">
+  <h1 class="silver-text">Admin Control Center</h1>
+  <p class="silver-soft">Contracts • Estimates • Invoices • Proposals</p>
 
-    <div class="weather-time silver-text">
-      <span id="atlClock"></span> • <span id="atlWeather"></span>
-    </div>
+  <div class="weather-time silver-text">
+    <span id="atlClock"></span> • <span id="atlWeather"></span>
   </div>
 </header>
 
-<!-- ============================
-     MAIN ADMIN LAYOUT
-============================= -->
-<main class="admin-container">
+<!-- MAIN LAYOUT -->
+<main class="admin-main">
 
-  <!-- LEFT SIDEBAR -->
-  <aside class="admin-sidebar">
-    <h3 class="silver-text">Document Type</h3>
+  <!-- LEFT: TABS + CLIENT INFO -->
+  <aside class="admin-left">
 
-    <select id="docType" onchange="switchDocType()">
-      <option value="contract">Contract</option>
-      <option value="estimate">Estimate</option>
-      <option value="invoice">Invoice</option>
-      <option value="proposal">Proposal</option>
-    </select>
-
-    <h3 class="silver-text">Instructions</h3>
-    <div id="instructionsBox" class="instructions-box silver-soft">
-      Select a document type to view instructions.
+    <div class="admin-tabs">
+      <button class="tab-btn active" data-tab="contract">Contract</button>
+      <button class="tab-btn" data-tab="estimate">Estimate</button>
+      <button class="tab-btn" data-tab="invoice">Invoice</button>
+      <button class="tab-btn" data-tab="proposal">Proposal</button>
     </div>
 
-    <h3 class="silver-text">Client Info</h3>
+    <div class="client-box">
+      <h3 class="silver-text">Client Info</h3>
 
-    <div class="field">
-      <label>Client Name</label>
-      <input id="clientName" type="text">
+      <div class="field">
+        <label>Client Name</label>
+        <input id="clientName" type="text">
+      </div>
+
+      <div class="field">
+        <label>Client Email</label>
+        <input id="clientEmail" type="email">
+      </div>
+
+      <div class="field">
+        <label>Job Address</label>
+        <input id="clientAddress" type="text">
+      </div>
     </div>
 
-    <div class="field">
-      <label>Client Email</label>
-      <input id="clientEmail" type="email">
-    </div>
+    <button class="bubble-btn primary full-btn" onclick="openEmailPreview()">Preview Email</button>
 
-    <div class="field">
-      <label>Job Address</label>
-      <input id="clientAddress" type="text">
-    </div>
-
-    <button class="bubble-btn primary" onclick="emailDocument()">Email Document</button>
   </aside>
 
-  <!-- MAIN DOCUMENT PANEL -->
-  <section class="admin-doc-panel">
+  <!-- RIGHT: EDITOR + PREVIEW -->
+  <section class="admin-right">
 
     <h2 id="docTitle" class="silver-text">Contract</h2>
 
-    <textarea id="docBody" class="doc-body"></textarea>
+    <textarea id="docBody" class="doc-editor"></textarea>
 
     <h3 class="silver-text">Client Signature</h3>
-
     <canvas id="signaturePad" width="600" height="200"></canvas>
 
     <div class="sig-actions">
@@ -130,15 +115,38 @@
 
 </main>
 
+<!-- EMAIL PREVIEW MODAL -->
+<div id="emailModal" class="email-modal">
+  <div class="email-modal-inner">
+    <h2 class="silver-text">Email Preview</h2>
+    <pre id="emailPreview"></pre>
+
+    <button class="bubble-btn primary" onclick="sendFinalEmail()">Send Email</button>
+    <button class="bubble-btn secondary" onclick="closeEmailPreview()">Close</button>
+  </div>
+</div>
+
 <footer class="footer">
   <p class="silver-soft">Admin • Kevin’s Tree Service LLC</p>
 </footer>
 
 <script src="/js/app.js"></script>
+<script src="/js/admin.js"></script>
 
 <script>
 function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
+}
+
+// Sparks
+const sparkContainer = document.getElementById("sparkContainer");
+for (let i = 0; i < 25; i++) {
+  const s = document.createElement("div");
+  s.className = "spark";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.animationDuration = 2 + Math.random() * 3 + "s";
+  s.style.animationDelay = Math.random() * 3 + "s";
+  sparkContainer.appendChild(s);
 }
 </script>
 
