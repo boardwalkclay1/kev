@@ -1,7 +1,12 @@
-// CLOCK + WEATHER FOR ATLANTA
+/* ============================================================
+   ATLANTA CLOCK + WEATHER (SAFE ON ALL PAGES)
+============================================================ */
 async function loadAtlantaWeather() {
   const weatherEl = document.getElementById("atlWeather");
   const clockEl = document.getElementById("atlClock");
+
+  // If the page doesn't have these elements, exit safely
+  if (!weatherEl || !clockEl) return;
 
   // Clock
   function updateClock() {
@@ -12,9 +17,9 @@ async function loadAtlantaWeather() {
   updateClock();
   setInterval(updateClock, 1000);
 
-  // Weather (Open-Meteo API)
-  const lat = 33.749; // Atlanta latitude
-  const lng = -84.388; // Atlanta longitude
+  // Weather API
+  const lat = 33.749; 
+  const lng = -84.388;
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current_weather=true&timezone=auto`;
 
   try {
@@ -47,7 +52,9 @@ function codeToText(code) {
   return map[code] || "Weather";
 }
 
-// SIGNATURE PAD
+/* ============================================================
+   SIGNATURE PAD — CLEAN + MOBILE SAFE
+============================================================ */
 let sigPad, sigCtx, drawing = false, lastX = 0, lastY = 0;
 
 function initSignaturePad() {
@@ -111,33 +118,37 @@ function downloadSignature() {
   if (!sigPad) return;
   const link = document.createElement("a");
   link.href = sigPad.toDataURL("image/png");
-  link.download = "signed-contract.png";
+  link.download = "signed-document.png";
   link.click();
 }
 
-// CONTRACT EMAIL
+/* ============================================================
+   CONTRACT EMAIL
+============================================================ */
 function openContractEmail() {
-  const clientName = document.getElementById("clientName").value.trim();
-  const clientEmail = document.getElementById("clientEmail").value.trim();
-  const clientAddress = document.getElementById("clientAddress").value.trim();
-  const contractText = document.getElementById("contractBody").value;
+  const clientName = val("clientName");
+  const clientEmail = val("clientEmail");
+  const clientAddress = val("clientAddress");
+  const contractText = val("contractBody");
 
   const subject = encodeURIComponent(`Tree Work Agreement — ${clientName || "Client"}`);
   const body = encodeURIComponent(
-    `Client: ${clientName}\nEmail: ${clientEmail}\nAddress: ${clientAddress}\n\n--- CONTRACT ---\n\n${contractText}\n\n(Attach the signed image file if available.)`
+    `Client: ${clientName}\nEmail: ${clientEmail}\nAddress: ${clientAddress}\n\n--- CONTRACT ---\n\n${contractText}\n\n(Attach signature if available.)`
   );
 
   const to = clientEmail || "kevinmosley2000@gmail.com";
   window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
 }
 
-// INVOICE EMAIL
+/* ============================================================
+   INVOICE EMAIL
+============================================================ */
 function openInvoiceEmail() {
-  const clientName = document.getElementById("clientName").value.trim();
-  const clientEmail = document.getElementById("clientEmail").value.trim();
-  const invoiceNumber = document.getElementById("invoiceNumber").value.trim();
-  const amount = document.getElementById("invoiceAmount").value.trim();
-  const notes = document.getElementById("invoiceNotes").value.trim();
+  const clientName = val("clientName");
+  const clientEmail = val("clientEmail");
+  const invoiceNumber = val("invoiceNumber");
+  const amount = val("invoiceAmount");
+  const notes = val("invoiceNotes");
 
   const subject = encodeURIComponent(`Invoice ${invoiceNumber || ""} — Kevin’s Tree Service`);
   const body = encodeURIComponent(
@@ -148,19 +159,19 @@ function openInvoiceEmail() {
   window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
 }
 
-// PAYMENT LINK
+/* ============================================================
+   PAYMENT LINK EMAIL
+============================================================ */
 function copyPaymentLink() {
-  const link = document.getElementById("paymentLink").value.trim();
+  const link = val("paymentLink");
   if (!link) return;
-  navigator.clipboard.writeText(link).then(() => {
-    alert("Payment link copied.");
-  });
+  navigator.clipboard.writeText(link).then(() => alert("Payment link copied."));
 }
 
 function openPaymentEmail() {
-  const clientName = document.getElementById("clientName").value.trim();
-  const clientEmail = document.getElementById("clientEmail").value.trim();
-  const link = document.getElementById("paymentLink").value.trim();
+  const clientName = val("clientName");
+  const clientEmail = val("clientEmail");
+  const link = val("paymentLink");
 
   const subject = encodeURIComponent(`Payment Link — Kevin’s Tree Service`);
   const body = encodeURIComponent(
@@ -171,7 +182,50 @@ function openPaymentEmail() {
   window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
 }
 
-// INIT EVERYTHING
+/* ============================================================
+   ESTIMATE EMAIL
+============================================================ */
+function sendEstimateEmail() {
+  const name = val("estName");
+  const phone = val("estPhone");
+  const address = val("estAddress");
+  const details = val("estDetails");
+
+  const subject = encodeURIComponent(`Free Estimate Request — ${name}`);
+  const body = encodeURIComponent(
+    `Name: ${name}\nPhone: ${phone}\nAddress: ${address}\n\nWork Details:\n${details}`
+  );
+
+  window.location.href = `mailto:kevinmosley2000@gmail.com?subject=${subject}&body=${body}`;
+}
+
+/* ============================================================
+   CONTACT EMAIL
+============================================================ */
+function sendContactEmail() {
+  const name = val("cName");
+  const phone = val("cPhone");
+  const msg = val("cMsg");
+
+  const subject = encodeURIComponent(`Message from ${name}`);
+  const body = encodeURIComponent(
+    `Name: ${name}\nPhone: ${phone}\n\nMessage:\n${msg}`
+  );
+
+  window.location.href = `mailto:kevinmosley2000@gmail.com?subject=${subject}&body=${body}`;
+}
+
+/* ============================================================
+   HELPER
+============================================================ */
+function val(id) {
+  const el = document.getElementById(id);
+  return el ? el.value.trim() : "";
+}
+
+/* ============================================================
+   INIT EVERYTHING
+============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
   loadAtlantaWeather();
   initSignaturePad();
