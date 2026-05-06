@@ -1,11 +1,9 @@
 /* ============================================================
-   ADMIN ENGINE v2 — CLEAN, MODULAR, PRODUCTION READY
-   Handles: Templates, Tabs, Email Preview, Weather, Clock,
-   Autosave, Clipboard, Signature Pad, Utilities
+   ADMIN ENGINE v3 — AUTO-FILL, BRANDING, PLACEHOLDERS, WEATHER
 ============================================================ */
 
 /* ===============================
-   PAPERWORK TEMPLATES
+   PAPERWORK TEMPLATES (with placeholders)
 =============================== */
 const DOC_TEMPLATES = {
   contract: `TREE WORK SERVICE AGREEMENT
@@ -13,45 +11,21 @@ Kevin’s Tree Service LLC
 Phone: 470‑515‑6134
 Email: kevinmosley2000@gmail.com
 
-Client Name: _______________________________
-Job Address: _______________________________
-Date: ___________________
+Client Name: {{clientName}}
+Job Address: {{clientAddress}}
+Date: {{date}}
 
 SCOPE OF WORK
-Kevin’s Tree Service LLC (“Contractor”) agrees to perform the following services:
-• Tree removal, trimming, pruning, or cleanup as described in the attached work order.
-• All work will be performed using industry‑standard safety practices.
-• Contractor is not responsible for underground utilities unless clearly marked by the client.
+{{workDescription}}
 
 PROPERTY ACCESS
-Client grants Contractor full access to the property, including driveways, yards, gates, and work areas. Client is responsible for securing pets and clearing personal items from the work zone.
+Client grants Contractor full access to the property, including driveways, yards, gates, and work areas.
 
 DEBRIS & CLEANUP
-Unless otherwise stated:
-• All brush, limbs, and logs will be removed.
-• Stump grinding is NOT included unless listed separately.
-• Raking and surface cleanup will be performed to a reasonable standard.
-
-HAZARDOUS TREE DISCLAIMER
-Trees that are dead, rotted, storm‑damaged, leaning, or structurally compromised may behave unpredictably.
-
-DAMAGE WAIVER
-Contractor is not responsible for:
-• Driveway cracks from equipment
-• Lawn ruts
-• Damage to unmarked utilities
+All debris will be removed unless otherwise stated.
 
 PAYMENT TERMS
 Payment due upon completion.
-
-WEATHER & DELAYS
-Work may be rescheduled due to unsafe weather.
-
-CANCELLATION
-Cancellations within 24 hours may incur a fee.
-
-LIABILITY & INSURANCE
-Contractor is fully insured.
 
 SIGNATURES
 Client Signature: ___________________________   Date: ____________
@@ -62,25 +36,21 @@ Kevin’s Tree Service LLC
 Phone: 470‑515‑6134
 Email: kevinmosley2000@gmail.com
 
-Client Name: _______________________________
-Job Address: _______________________________
-Date: ___________________
+Client Name: {{clientName}}
+Job Address: {{clientAddress}}
+Date: {{date}}
 
 REQUESTED WORK
-• __________________________________________
-• __________________________________________
-• __________________________________________
+{{workDescription}}
 
 ESTIMATED COST
-Labor: $__________
-Equipment: $__________
-Debris Removal: $__________
-Total Estimate: $__________
+Labor: ${{labor}}
+Equipment: ${{equipment}}
+Debris Removal: ${{debris}}
+Total Estimate: ${{total}}
 
 NOTES
-• Estimate based on visible conditions.
-• Hidden rot or storm damage may affect pricing.
-• Stump grinding not included unless listed.
+{{notes}}
 
 VALID FOR 14 DAYS.`,
 
@@ -89,23 +59,21 @@ Kevin’s Tree Service LLC
 Phone: 470‑515‑6134
 Email: kevinmosley2000@gmail.com
 
-Invoice #: ___________________
-Date: _______________________
+Invoice #: {{invoiceNumber}}
+Date: {{date}}
 
 Bill To:
-Client Name: _______________________________
-Address: ___________________________________
+{{clientName}}
+{{clientAddress}}
 
 SERVICES PROVIDED
-• __________________________________________
-• __________________________________________
-• __________________________________________
+{{workDescription}}
 
 TOTAL DUE
-Labor: $__________
-Equipment: $__________
-Debris Removal: $__________
-Total Amount Due: $__________
+Labor: ${{labor}}
+Equipment: ${{equipment}}
+Debris Removal: ${{debris}}
+Total Amount Due: ${{total}}
 
 PAYMENT TERMS
 Payment due upon completion.`,
@@ -115,14 +83,12 @@ Kevin’s Tree Service LLC
 Phone: 470‑515‑6134
 Email: kevinmosley2000@gmail.com
 
-Client Name: _______________________________
-Job Address: _______________________________
-Date: ___________________
+Client Name: {{clientName}}
+Job Address: {{clientAddress}}
+Date: {{date}}
 
 RECOMMENDED WORK
-• __________________________________________
-• __________________________________________
-• __________________________________________
+{{workDescription}}
 
 BENEFITS
 • Increased safety
@@ -130,7 +96,7 @@ BENEFITS
 • Healthier canopy
 • More sunlight
 
-ESTIMATED TOTAL: $__________
+ESTIMATED TOTAL: ${{total}}
 
 Client Signature: ___________________________`
 };
@@ -139,6 +105,44 @@ Client Signature: ___________________________`
    SHORTCUTS
 =============================== */
 const $ = id => document.getElementById(id);
+
+/* ===============================
+   DOCUMENT GENERATOR (AUTO-FILL)
+=============================== */
+function generateDocument() {
+  const type = document.querySelector(".tab-btn.active").dataset.tab;
+  let template = DOC_TEMPLATES[type];
+
+  const replacements = {
+    "{{clientName}}": v("clientName"),
+    "{{clientAddress}}": v("clientAddress"),
+    "{{date}}": new Date().toLocaleDateString(),
+    "{{workDescription}}": v("workDescription"),
+    "{{labor}}": v("labor"),
+    "{{equipment}}": v("equipment"),
+    "{{debris}}": v("debris"),
+    "{{total}}": v("total"),
+    "{{notes}}": v("notes"),
+    "{{invoiceNumber}}": v("invoiceNumber")
+  };
+
+  for (const key in replacements) {
+    template = template.replaceAll(key, replacements[key] || "");
+  }
+
+  // Add branded footer + logo
+  template += `
+
+------------------------------
+Kevin’s Tree Service LLC
+470‑515‑6134
+kevinmosley2000@gmail.com
+(Logo Attached)
+`;
+
+  $("docBody").value = template;
+  saveDraft();
+}
 
 /* ===============================
    TAB SYSTEM
@@ -159,7 +163,6 @@ function initTabs() {
     });
   });
 
-  // Load default
   $("docBody").value = DOC_TEMPLATES.contract;
 }
 
@@ -198,6 +201,11 @@ function sendFinalEmail() {
 /* ===============================
    UTILITIES
 =============================== */
+function v(id) {
+  const el = $(id);
+  return el ? el.value.trim() : "";
+}
+
 function insertTimestamp() {
   $("docBody").value += `\n\nGenerated: ${new Date().toLocaleString()}`;
   saveDraft();
@@ -217,7 +225,14 @@ function saveDraft() {
     body: $("docBody").value,
     name: $("clientName").value,
     email: $("clientEmail").value,
-    address: $("clientAddress").value
+    address: $("clientAddress").value,
+    work: $("workDescription")?.value || "",
+    labor: $("labor")?.value || "",
+    equipment: $("equipment")?.value || "",
+    debris: $("debris")?.value || "",
+    total: $("total")?.value || "",
+    notes: $("notes")?.value || "",
+    invoiceNumber: $("invoiceNumber")?.value || ""
   };
 
   localStorage.setItem("adminDraft", JSON.stringify(draft));
@@ -228,10 +243,17 @@ function loadDraft() {
   if (!draft.body) return;
 
   $("docTitle").textContent = draft.type || "Contract";
-  $("docBody").value = draft.body || DOC_TEMPLATES.contract;
+  $("docBody").value = draft.body;
   $("clientName").value = draft.name || "";
   $("clientEmail").value = draft.email || "";
   $("clientAddress").value = draft.address || "";
+  $("workDescription").value = draft.work || "";
+  $("labor").value = draft.labor || "";
+  $("equipment").value = draft.equipment || "";
+  $("debris").value = draft.debris || "";
+  $("total").value = draft.total || "";
+  $("notes").value = draft.notes || "";
+  $("invoiceNumber").value = draft.invoiceNumber || "";
 }
 
 /* ===============================
@@ -241,12 +263,10 @@ async function loadAtlantaWeather() {
   const weatherEl = $("atlWeather");
   const clockEl = $("atlClock");
 
-  // Clock
   setInterval(() => {
     clockEl.textContent = new Date().toLocaleTimeString("en-US");
   }, 1000);
 
-  // Weather
   try {
     const res = await fetch(
       "https://api.open-meteo.com/v1/forecast?latitude=33.749&longitude=-84.388&current_weather=true&temperature_unit=fahrenheit&timezone=auto"
