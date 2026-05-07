@@ -3,20 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin — Kevin’s Tree Service</title>
+  <title>Admin Dashboard — Kevin’s Tree Service</title>
 
-  <link rel="icon" type="image/png" href="/public/img/kev-log.png">
+  <link rel="icon" type="image/png" href="/img/kev-log.png">
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/admin.css">
 </head>
 
-<body class="admin-body">
+<body>
 
 <div id="sparkContainer"></div>
 
 <nav class="navbar">
   <div class="brand">
-    <img src="/public/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
+    <img src="/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
     <span class="brand-text silver-text">KEVIN’S TREE SERVICE LLC</span>
   </div>
 
@@ -36,7 +35,7 @@
 </nav>
 
 <div id="mobileMenu" class="mobile-menu">
-  <a href="javascript:history.back()" class="mobile-back silver-text">← Back</a>
+  <a class="mobile-back silver-text" href="javascript:void(0)" onclick="toggleMenu()">← Close</a>
   <a href="/index.html">Home</a>
   <a href="/pages/services.html">Services</a>
   <a href="/pages/gallery.html">Gallery</a>
@@ -46,82 +45,187 @@
   <a href="/pages/admin.html" class="active">Admin</a>
 </div>
 
-<header class="admin-top">
-  <img src="/public/img/kev-log.png" class="admin-big-logo" alt="Kevin’s Tree Service Logo">
-  <h1 class="silver-text">Admin Control Center</h1>
-  <p class="silver-soft">Contracts • Estimates • Invoices • Proposals</p>
+<main class="admin-layout">
 
-  <div class="weather-time silver-text">
-    <span id="atlClock"></span> • <span id="atlWeather"></span>
-  </div>
-</header>
+  <!-- SIDEBAR -->
+  <aside class="admin-sidebar">
+    <h2 class="silver-text">Dashboard</h2>
+    <ul class="admin-nav silver-soft">
+      <li class="active">Clients</li>
+      <li>Invoices</li>
+      <li>Proposals</li>
+      <li>Jobs</li>
+    </ul>
 
-<main class="admin-main">
-
-  <aside class="admin-left">
-    <div class="admin-tabs">
-      <button class="tab-btn active" data-tab="contract">Contract</button>
-      <button class="tab-btn" data-tab="estimate">Estimate</button>
-      <button class="tab-btn" data-tab="invoice">Invoice</button>
-      <button class="tab-btn" data-tab="proposal">Proposal</button>
-    </div>
-
-    <div class="client-box">
-      <h3 class="silver-text">Client Info</h3>
-
-      <div class="field">
-        <label>Client Name</label>
-        <input id="clientName" type="text">
-      </div>
-
-      <div class="field">
-        <label>Client Email</label>
-        <input id="clientEmail" type="email">
-      </div>
-
-      <div class="field">
-        <label>Job Address</label>
-        <input id="clientAddress" type="text">
-      </div>
-    </div>
-
-    <button class="bubble-btn primary full-btn" onclick="openEmailPreview()">Preview Email</button>
-    <button class="bubble-btn secondary full-btn" onclick="insertTimestamp()">Insert Timestamp</button>
-    <button class="bubble-btn secondary full-btn" onclick="copyDocToClipboard()">Copy Document</button>
+    <button class="bubble-btn secondary admin-new-btn">+ New Client</button>
   </aside>
 
-  <section class="admin-right">
-    <h2 id="docTitle" class="silver-text">Contract</h2>
+  <!-- MAIN CONTENT -->
+  <section class="admin-main">
 
-    <textarea id="docBody" class="doc-editor"></textarea>
-
-    <h3 class="silver-text">Client Signature</h3>
-    <canvas id="signaturePad" width="600" height="200"></canvas>
-
-    <div class="sig-actions">
-      <button class="bubble-btn secondary" onclick="clearSignature()">Clear</button>
-      <button class="bubble-btn primary" onclick="downloadSignature()">Download Signature</button>
+    <!-- TOP STATS -->
+    <div class="admin-stats">
+      <div class="admin-stat-card">
+        <span class="label silver-soft">Active Clients</span>
+        <span class="value silver-text">24</span>
+      </div>
+      <div class="admin-stat-card">
+        <span class="label silver-soft">Open Invoices</span>
+        <span class="value silver-text">$4,320</span>
+      </div>
+      <div class="admin-stat-card">
+        <span class="label silver-soft">Pending Proposals</span>
+        <span class="value silver-text">7</span>
+      </div>
     </div>
-  </section>
 
+    <!-- CLIENTS TABLE -->
+    <div class="admin-panel">
+      <div class="admin-panel-header">
+        <h2 class="silver-text">Clients</h2>
+        <input type="text" class="admin-search" placeholder="Search clients by name, phone, or address">
+      </div>
+
+      <div class="admin-table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Client</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Last Job</th>
+              <th>Invoices</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John Miller</td>
+              <td>(470) 555‑0134</td>
+              <td>john@example.com</td>
+              <td>123 Oak Ridge Dr, Atlanta, GA</td>
+              <td>Tree removal</td>
+              <td>$650 (paid)</td>
+            </tr>
+            <tr>
+              <td>Sarah Thompson</td>
+              <td>(404) 555‑8821</td>
+              <td>sarah.t@example.com</td>
+              <td>89 Pineview Ln, Decatur, GA</td>
+              <td>Trimming & cleanup</td>
+              <td>$420 (open)</td>
+            </tr>
+            <tr>
+              <td>Brightside Church</td>
+              <td>(770) 555‑9920</td>
+              <td>office@brightside.org</td>
+              <td>501 Maple St, Marietta, GA</td>
+              <td>Storm cleanup</td>
+              <td>$1,800 (proposal)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- INVOICES + PROPOSALS -->
+    <div class="admin-grid-two">
+
+      <div class="admin-panel">
+        <div class="admin-panel-header">
+          <h2 class="silver-text">Invoices</h2>
+          <button class="bubble-btn secondary small-btn">+ New Invoice</button>
+        </div>
+        <div class="admin-table-wrapper">
+          <table class="admin-table compact">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Client</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Due</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>INV‑1043</td>
+                <td>Sarah Thompson</td>
+                <td>$420</td>
+                <td class="status-open">Open</td>
+                <td>05/18/2026</td>
+              </tr>
+              <tr>
+                <td>INV‑1042</td>
+                <td>John Miller</td>
+                <td>$650</td>
+                <td class="status-paid">Paid</td>
+                <td>04/29/2026</td>
+              </tr>
+              <tr>
+                <td>INV‑1041</td>
+                <td>Brightside Church</td>
+                <td>$1,250</td>
+                <td class="status-overdue">Overdue</td>
+                <td>04/10/2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="admin-panel">
+        <div class="admin-panel-header">
+          <h2 class="silver-text">Proposals</h2>
+          <button class="bubble-btn secondary small-btn">+ New Proposal</button>
+        </div>
+        <div class="admin-table-wrapper">
+          <table class="admin-table compact">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Client</th>
+                <th>Scope</th>
+                <th>Value</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>PROP‑207</td>
+                <td>Brightside Church</td>
+                <td>Storm cleanup & trimming</td>
+                <td>$1,800</td>
+                <td class="status-sent">Sent</td>
+              </tr>
+              <tr>
+                <td>PROP‑206</td>
+                <td>Oakwood HOA</td>
+                <td>Common area removals</td>
+                <td>$3,400</td>
+                <td class="status-draft">Draft</td>
+              </tr>
+              <tr>
+                <td>PROP‑205</td>
+                <td>Sarah Thompson</td>
+                <td>Backyard tree removal</td>
+                <td>$750</td>
+                <td class="status-accepted">Accepted</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
 </main>
 
-<div id="emailModal" class="email-modal">
-  <div class="email-modal-inner">
-    <h2 class="silver-text">Email Preview</h2>
-    <pre id="emailPreview"></pre>
-
-    <button class="bubble-btn primary" onclick="sendFinalEmail()">Send Email</button>
-    <button class="bubble-btn secondary" onclick="closeEmailPreview()">Close</button>
-  </div>
-</div>
-
 <footer class="footer">
-  <p class="silver-soft">Admin • Kevin’s Tree Service LLC</p>
+  <p class="silver-soft">© 2026 Kevin’s Tree Service LLC</p>
 </footer>
 
-<script src="/js/app.js"></script>
-<script src="/js/admin.js"></script>
 <script>
 function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
