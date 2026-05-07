@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta-name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About — Kevin’s Tree Service LLC</title>
 
   <link rel="icon" type="image/png" href="/img/kev-log.png">
@@ -11,10 +11,8 @@
 
 <body>
 
-<!-- SPARK PARTICLES -->
 <div id="sparkContainer"></div>
 
-<!-- NAVIGATION -->
 <nav class="navbar">
   <div class="brand">
     <img src="/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
@@ -36,9 +34,8 @@
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div id="mobileMenu" class="mobile-menu">
-  <a class="mobile-back silver-text" href="javascript:void(0)" onclick="toggleMenu()">← Close</a>
+  <a class="mobile-back silver-text" onclick="toggleMenu()">← Close</a>
   <a href="/index.html">Home</a>
   <a href="/pages/services.html">Services</a>
   <a href="/pages/gallery.html">Gallery</a>
@@ -48,7 +45,6 @@
   <a href="/pages/admin.html">Admin</a>
 </div>
 
-<!-- ABOUT HERO -->
 <header class="sub-hero">
   <div class="sub-hero-inner">
     <h1 class="silver-text">About Kevin’s Tree Service</h1>
@@ -56,7 +52,6 @@
   </div>
 </header>
 
-<!-- ABOUT CONTENT -->
 <section class="section light about-section">
   <div class="about-wrapper">
 
@@ -70,18 +65,17 @@
 
       <p class="silver-soft">
         From small trims to full removals, Kevin handles every job personally — ensuring
-        safety, precision, and a clean yard when the work is done. No shortcuts. No surprises.
-        Just honest work and reliable service.
+        safety, precision, and a clean yard when the work is done.
       </p>
 
       <h2 class="silver-text">Why People Choose Us</h2>
       <ul class="about-list silver-soft">
-        <li>✔ Fully insured for your protection</li>
-        <li>✔ Same‑day service available</li>
+        <li>✔ Fully insured</li>
+        <li>✔ Same‑day service</li>
         <li>✔ Free written estimates</li>
-        <li>✔ Safe removals near homes, fences, and power lines</li>
+        <li>✔ Safe removals near structures</li>
         <li>✔ Clean, professional job sites</li>
-        <li>✔ 10% off for referrals</li>
+        <li>✔ 10% referral discount</li>
       </ul>
 
       <h2 class="silver-text">Our Mission</h2>
@@ -98,11 +92,10 @@
   </div>
 </section>
 
-<!-- CTA -->
-<section class="section dark">
+<section class="section dark bottom-cta">
   <h2 class="section-title silver-text">Need Tree Work Done?</h2>
   <p class="silver-soft">We respond fast — send photos and get a free estimate today.</p>
-  <a href="/pages/estimate.html" class="bubble-btn primary">Request Estimate</a>
+  <a href="/pages/estimate.html" class="bubble-btn primary cta-btn">Request Estimate</a>
 </section>
 
 <footer class="footer">
@@ -116,7 +109,6 @@ function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
 }
 
-// Sparks
 const sparkContainer = document.getElementById("sparkContainer");
 for (let i = 0; i < 25; i++) {
   const s = document.createElement("div");
