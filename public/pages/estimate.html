@@ -2,16 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
+  <!-- FIXED VIEWPORT -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Free Estimate — Kevin’s Tree Service</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/public/img/kev-log.png">
+  <link rel="icon" type="image/png" href="/img/kev-log.png">
 
   <!-- Social Preview -->
   <meta property="og:title" content="Kevin’s Tree Service — Free Estimate">
   <meta property="og:description" content="Request a free estimate for tree removal, trimming, or cleanup.">
-  <meta property="og:image" content="/public/img/kev-log.png">
+  <meta property="og:image" content="/img/kev-log.png">
   <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="/css/style.css">
@@ -22,12 +25,10 @@
 <!-- SPARK PARTICLES -->
 <div id="sparkContainer"></div>
 
-<!-- ============================
-     NAVIGATION + BURGER MENU
-============================= -->
+<!-- NAVIGATION -->
 <nav class="navbar">
   <div class="brand">
-    <img src="/public/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
+    <img src="/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
     <span class="brand-text silver-text">KEVIN’S TREE SERVICE LLC</span>
   </div>
 
@@ -48,7 +49,7 @@
 
 <!-- MOBILE MENU -->
 <div id="mobileMenu" class="mobile-menu">
-  <a href="javascript:history.back()" class="mobile-back silver-text">← Back</a>
+  <a class="mobile-back silver-text" onclick="toggleMenu()">← Close</a>
   <a href="/index.html">Home</a>
   <a href="/pages/services.html">Services</a>
   <a href="/pages/gallery.html">Gallery</a>
@@ -58,9 +59,7 @@
   <a href="/pages/admin.html">Admin</a>
 </div>
 
-<!-- ============================
-     PAGE HEADER
-============================= -->
+<!-- HEADER -->
 <header class="sub-header">
   <div class="sub-header-inner">
     <h1 class="silver-text">Request a Free Estimate</h1>
@@ -68,9 +67,7 @@
   </div>
 </header>
 
-<!-- ============================
-     MAIN CONTENT
-============================= -->
+<!-- MAIN CONTENT -->
 <main class="page-main">
 
   <section class="section light narrow">
@@ -99,7 +96,9 @@
         <textarea id="estDetails" rows="5" required></textarea>
       </div>
 
-      <button type="button" class="bubble-btn primary" onclick="sendEstimateEmail()">Send Estimate Request</button>
+      <button type="button" class="bubble-btn primary" onclick="sendEstimateEmail()">
+        Send Estimate Request
+      </button>
 
       <p class="hint silver-soft">
         This will open your email app with everything filled in — just press send.
@@ -115,14 +114,36 @@
   <p class="silver-soft">© 2026 Kevin’s Tree Service LLC</p>
 </footer>
 
-<script src="/js/app.js"></script>
-
 <script>
 function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
 }
 
-// Generate sparks
+// Email Auto-Fill
+function sendEstimateEmail() {
+  const name = document.getElementById("estName").value;
+  const phone = document.getElementById("estPhone").value;
+  const address = document.getElementById("estAddress").value;
+  const details = document.getElementById("estDetails").value;
+
+  const subject = encodeURIComponent("Free Estimate Request");
+  const body = encodeURIComponent(
+`FREE ESTIMATE REQUEST
+
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+
+Work Description:
+${details}
+
+Sent from Kevin’s Tree Service website`
+  );
+
+  window.location.href = `mailto:kevinmosley2000@gmail.com?subject=${subject}&body=${body}`;
+}
+
+// Sparks
 const sparkContainer = document.getElementById("sparkContainer");
 for (let i = 0; i < 25; i++) {
   const s = document.createElement("div");
