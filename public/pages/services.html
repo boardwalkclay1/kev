@@ -5,26 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services — Kevin’s Tree Service</title>
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/img/kev-log.png">
-
-  <!-- Social Preview -->
-  <meta property="og:title" content="Kevin’s Tree Service — Full Service List">
-  <meta property="og:description" content="Tree removal, trimming, storm cleanup, stump grinding, and more.">
-  <meta property="og:image" content="/img/kev-log.png">
-  <meta property="og:type" content="website">
-
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 
-<!-- ============================
-     NAVIGATION + BURGER MENU
-============================= -->
 <nav class="navbar">
   <div class="brand">
-    <img src="/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
+    <img src="/img/kev-log.png" class="nav-logo">
     <span class="brand-text silver-text">KEVIN’S TREE SERVICE LLC</span>
   </div>
 
@@ -43,9 +32,8 @@
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div id="mobileMenu" class="mobile-menu">
-  <a href="javascript:history.back()" class="mobile-back silver-text">← Back</a>
+  <a class="mobile-back silver-text" onclick="toggleMenu()">← Close</a>
   <a href="/index.html">Home</a>
   <a href="/pages/services.html" class="active">Services</a>
   <a href="/pages/gallery.html">Gallery</a>
@@ -55,110 +43,79 @@
   <a href="/pages/admin.html">Admin</a>
 </div>
 
-<!-- ============================
-     PAGE HEADER
-============================= -->
 <header class="sub-header">
   <div class="sub-header-inner">
     <h1 class="silver-text">Services</h1>
-    <p class="silver-soft">Tree removal, trimming, cleanup, storm response, and more.</p>
+    <p class="silver-soft">Choose a service below and request it instantly.</p>
   </div>
 </header>
 
-<!-- ============================
-     MAIN CONTENT
-============================= -->
 <main class="page-main">
 
-  <!-- TREE REMOVAL -->
-  <section class="section light">
+  <!-- TEMPLATE FOR EACH SERVICE -->
+  <section class="section light service-block">
     <h2 class="section-title silver-text">Tree Removal</h2>
     <p class="silver-soft">
-      Safe, controlled removal of trees of all sizes — including hazardous, dead, leaning, storm‑damaged, 
-      or trees close to homes, fences, sheds, and power lines. We use ropes, rigging, climbing, and 
-      precision cutting to protect your property.
+      Safe, controlled removal of hazardous, dead, leaning, or storm‑damaged trees.
+      <br><strong class="silver-text">Price Range: $250 – $2,500+</strong>
     </p>
+
+    <button class="bubble-btn primary" onclick="openForm('Tree Removal')">Request This Service</button>
+
+    <div class="service-form" id="form-Tree Removal">
+      <h3 class="silver-text">Request Tree Removal</h3>
+
+      <input id="name-Tree Removal" placeholder="Your Name">
+      <input id="address-Tree Removal" placeholder="Your Address">
+      <input id="phone-Tree Removal" placeholder="Your Phone Number">
+      <textarea id="details-Tree Removal" placeholder="Describe the tree or issue"></textarea>
+
+      <button class="bubble-btn secondary" onclick="sendEmail('Tree Removal')">Send Request</button>
+    </div>
   </section>
 
-  <!-- TRIMMING -->
-  <section class="section light">
+  <!-- COPY/PASTE BLOCK FOR EACH SERVICE BELOW -->
+
+  <section class="section light service-block">
     <h2 class="section-title silver-text">Tree Trimming & Pruning</h2>
     <p class="silver-soft">
-      Structural pruning, thinning, shaping, roofline clearing, deadwood removal, and canopy lifting. 
-      We improve tree health, reduce storm risk, and open up sunlight for your yard.
+      Structural pruning, thinning, shaping, roofline clearing, and deadwood removal.
+      <br><strong class="silver-text">Price Range: $150 – $900+</strong>
     </p>
+
+    <button class="bubble-btn primary" onclick="openForm('Tree Trimming')">Request This Service</button>
+
+    <div class="service-form" id="form-Tree Trimming">
+      <h3 class="silver-text">Request Tree Trimming</h3>
+
+      <input id="name-Tree Trimming" placeholder="Your Name">
+      <input id="address-Tree Trimming" placeholder="Your Address">
+      <input id="phone-Tree Trimming" placeholder="Your Phone Number">
+      <textarea id="details-Tree Trimming" placeholder="Describe the trimming needed"></textarea>
+
+      <button class="bubble-btn secondary" onclick="sendEmail('Tree Trimming')">Send Request</button>
+    </div>
   </section>
 
-  <!-- EMERGENCY -->
-  <section class="section light">
+  <section class="section light service-block">
     <h2 class="section-title silver-text">Storm & Emergency Response</h2>
     <p class="silver-soft">
-      Fast removal of downed trees and limbs after storms. Emergency same‑day response available for 
-      blocked driveways, crushed fences, roof impacts, and dangerous hangers.
+      Fast removal of downed trees and limbs after storms.
+      <br><strong class="silver-text">Price Range: $300 – $3,500+</strong>
     </p>
-  </section>
 
-  <!-- CLEANUP -->
-  <section class="section light">
-    <h2 class="section-title silver-text">Cleanup & Haul‑Away</h2>
-    <p class="silver-soft">
-      Brush, logs, branches, and debris can be hauled away or stacked neatly. We leave your yard clean 
-      and ready to enjoy.
-    </p>
-  </section>
+    <button class="bubble-btn primary" onclick="openForm('Storm Cleanup')">Request This Service</button>
 
-  <!-- STUMP GRINDING -->
-  <section class="section light">
-    <h2 class="section-title silver-text">Stump Grinding</h2>
-    <p class="silver-soft">
-      Grind stumps below ground level to remove tripping hazards, prevent regrowth, and prepare the area 
-      for grass, mulch, or new planting.
-    </p>
-  </section>
+    <div class="service-form" id="form-Storm Cleanup">
+      <h3 class="silver-text">Request Storm Cleanup</h3>
 
-  <!-- TREE HEALTH -->
-  <section class="section light">
-    <h2 class="section-title silver-text">Tree Health & Evaluation</h2>
-    <p class="silver-soft">
-      We inspect trees for disease, rot, pests, root issues, and structural weakness. Includes 
-      recommendations for treatment, trimming, or removal.
-    </p>
-  </section>
+      <input id="name-Storm Cleanup" placeholder="Your Name">
+      <input id="address-Storm Cleanup" placeholder="Your Address">
+      <input id="phone-Storm Cleanup" placeholder="Your Phone Number">
+      <textarea id="details-Storm Cleanup" placeholder="Describe the storm damage"></textarea>
 
-  <!-- LOT CLEARING -->
-  <section class="section light">
-    <h2 class="section-title silver-text">Lot Clearing & Brush Removal</h2>
-    <p class="silver-soft">
-      Clearing overgrown lots, wooded areas, fence lines, and property edges. Great for new builds, 
-      renovations, and reclaiming yard space.
-    </p>
-  </section>
-
-  <!-- CABLING -->
-  <section class="section light">
-    <h2 class="section-title silver-text">Cabling & Structural Support</h2>
-    <p class="silver-soft">
-      Install support systems for split trunks, weak unions, or heavy limbs to reduce failure risk and 
-      extend the life of valuable trees.
-    </p>
-  </section>
-
-  <!-- CLIMBING -->
-  <section class="section light">
-    <h2 class="section-title silver-text">Advanced Climbing & Rigging</h2>
-    <p class="silver-soft">
-      Expert rope work for tight spaces where bucket trucks can’t reach. Precision lowering of limbs 
-      over roofs, decks, and fragile areas.
-    </p>
-  </section>
-
-  <!-- DRONE INSPECTION -->
-  <section class="section light">
-    <h2 class="section-title silver-text">Drone Inspection</h2>
-    <p class="silver-soft">
-      Aerial inspection of tall trees, storm damage, and canopy conditions using drone technology for 
-      safer, faster assessments.
-    </p>
+      <button class="bubble-btn secondary" onclick="sendEmail('Storm Cleanup')">Send Request</button>
+    </div>
   </section>
 
 </main>
@@ -171,7 +128,52 @@
 function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
 }
+
+function openForm(service) {
+  document.querySelectorAll('.service-form').forEach(f => f.style.display = 'none');
+  document.getElementById('form-' + service).style.display = 'block';
+}
+
+function sendEmail(service) {
+  const name = document.getElementById('name-' + service).value;
+  const address = document.getElementById('address-' + service).value;
+  const phone = document.getElementById('phone-' + service).value;
+  const details = document.getElementById('details-' + service).value;
+
+  const subject = encodeURIComponent(service + " Request");
+  const body = encodeURIComponent(
+    `SERVICE REQUEST: ${service}
+
+Client Name: ${name}
+Address: ${address}
+Phone: ${phone}
+
+Details:
+${details}
+
+Price Range: (see website section for estimate)
+
+Sent from Kevin’s Tree Service website`
+  );
+
+  window.location.href = `mailto:kevinmosley2000@gmail.com?subject=${subject}&body=${body}`;
+}
 </script>
+
+<style>
+.service-form {
+  display: none;
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+}
+.service-form input,
+.service-form textarea {
+  margin-bottom: 12px;
+}
+</style>
 
 </body>
 </html>
