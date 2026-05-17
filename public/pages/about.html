@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
 
-  <!-- FIXED VIEWPORT TAG -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>About — Kevin’s Tree Service LLC</title>
@@ -14,10 +13,8 @@
 
 <body>
 
-<!-- SPARKS -->
 <div id="sparkContainer"></div>
 
-<!-- NAVIGATION -->
 <nav class="navbar">
   <div class="brand">
     <img src="/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
@@ -39,7 +36,6 @@
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div id="mobileMenu" class="mobile-menu">
   <a class="mobile-back silver-text" onclick="toggleMenu()">← Close</a>
   <a href="/index.html">Home</a>
@@ -51,16 +47,14 @@
   <a href="/pages/admin.html">Admin</a>
 </div>
 
-<!-- HERO -->
-<header class="sub-hero" style="position: relative; z-index: 5;">
+<header class="sub-hero">
   <div class="sub-hero-inner">
     <h1 class="silver-text">About Kevin’s Tree Service</h1>
     <p class="silver-soft">Local • Experienced • Fully Insured • Customer‑Focused</p>
   </div>
 </header>
 
-<!-- ABOUT CONTENT -->
-<section class="section light about-section" style="position: relative; z-index: 5;">
+<section class="section light about-section">
   <div class="about-wrapper">
 
     <div class="about-text">
@@ -100,8 +94,7 @@
   </div>
 </section>
 
-<!-- CTA -->
-<section class="section dark bottom-cta" style="padding-bottom: 160px; position: relative; z-index: 5;">
+<section class="section dark bottom-cta">
   <h2 class="section-title silver-text">Need Tree Work Done?</h2>
   <p class="silver-soft">We respond fast — send photos and get a free estimate today.</p>
 
@@ -110,8 +103,7 @@
   <a href="/pages/estimate.html" class="bubble-btn primary cta-btn">Request Estimate</a>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer" style="position: relative; z-index: 5;">
+<footer class="footer">
   <p class="silver-soft">© 2026 Kevin’s Tree Service LLC</p>
 </footer>
 
@@ -122,7 +114,6 @@ function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
 }
 
-// Sparks
 const sparkContainer = document.getElementById("sparkContainer");
 for (let i = 0; i < 25; i++) {
   const s = document.createElement("div");
