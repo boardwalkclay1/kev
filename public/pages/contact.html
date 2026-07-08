@@ -15,6 +15,38 @@
   <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    /* GLOBAL BACKGROUND */
+    body {
+      background: url('/img/kevins-tree-service-logo.png') center/cover no-repeat fixed;
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    /* Make content transparent so background shows */
+    .section.light,
+    .section.dark,
+    header.sub-header {
+      background: transparent !important;
+    }
+
+    /* Spark layer */
+    #sparkContainer {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    /* Foreground content */
+    nav, .mobile-menu, .contact-block, footer {
+      position: relative;
+      z-index: 2;
+    }
+  </style>
 </head>
 
 <body>
@@ -63,8 +95,9 @@
 
 <main class="page-main">
   <section class="section light narrow contact-block">
+
     <div class="contact-header">
-      <img src="/public/img/kev-log.png" alt="Kevin’s Tree Service Logo" class="contact-logo">
+      <img src="/img/kev-log.png" alt="Kevin’s Tree Service Logo" class="contact-logo">
       <div class="contact-info">
         <p class="silver-text"><strong>Phone:</strong> <a href="tel:14705156134" class="silver-text">470‑515‑6134</a></p>
         <p class="silver-text"><strong>Email:</strong> <a href="mailto:kevinmosley2000@gmail.com" class="silver-text">kevinmosley2000@gmail.com</a></p>
@@ -92,6 +125,7 @@
       <button type="button" class="bubble-btn primary" onclick="sendContactEmail()">Send Message</button>
       <p class="hint silver-soft">This opens your email app with the message ready to send.</p>
     </form>
+
   </section>
 </main>
 
@@ -100,6 +134,7 @@
 </footer>
 
 <script src="/js/app.js"></script>
+
 <script>
 function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
