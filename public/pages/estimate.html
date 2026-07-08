@@ -3,29 +3,56 @@
 <head>
   <meta charset="UTF-8">
 
-  <!-- FIXED VIEWPORT -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Free Estimate — Kevin’s Tree Service</title>
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/img/kev-log.png">
 
-  <!-- Social Preview -->
   <meta property="og:title" content="Kevin’s Tree Service — Free Estimate">
   <meta property="og:description" content="Request a free estimate for tree removal, trimming, or cleanup.">
   <meta property="og:image" content="/img/kev-log.png">
   <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    /* GLOBAL BACKGROUND — NEVER CENTERED IMAGE */
+    body {
+      background: url('/img/kevins-tree-service-logo.png') top left / cover no-repeat fixed;
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    /* Remove any accidental background blocks */
+    .section.light,
+    .section.dark,
+    header.sub-header {
+      background: transparent !important;
+    }
+
+    /* Spark layer */
+    #sparkContainer {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    /* Foreground content */
+    nav, .mobile-menu, .page-main, footer {
+      position: relative;
+      z-index: 2;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- SPARK PARTICLES -->
 <div id="sparkContainer"></div>
 
-<!-- NAVIGATION -->
 <nav class="navbar">
   <div class="brand">
     <img src="/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
@@ -47,7 +74,6 @@
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div id="mobileMenu" class="mobile-menu">
   <a class="mobile-back silver-text" onclick="toggleMenu()">← Close</a>
   <a href="/index.html">Home</a>
@@ -59,7 +85,6 @@
   <a href="/pages/admin.html">Admin</a>
 </div>
 
-<!-- HEADER -->
 <header class="sub-header">
   <div class="sub-header-inner">
     <h1 class="silver-text">Request a Free Estimate</h1>
@@ -67,7 +92,6 @@
   </div>
 </header>
 
-<!-- MAIN CONTENT -->
 <main class="page-main">
 
   <section class="section light narrow">
@@ -119,7 +143,6 @@ function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
 }
 
-// Email Auto-Fill
 function sendEstimateEmail() {
   const name = document.getElementById("estName").value;
   const phone = document.getElementById("estPhone").value;
@@ -143,7 +166,6 @@ Sent from Kevin’s Tree Service website`
   window.location.href = `mailto:kevinmosley2000@gmail.com?subject=${subject}&body=${body}`;
 }
 
-// Sparks
 const sparkContainer = document.getElementById("sparkContainer");
 for (let i = 0; i < 25; i++) {
   const s = document.createElement("div");
