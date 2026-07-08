@@ -34,7 +34,7 @@ html, body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--silver);
   overflow-x: hidden;
-  background: transparent; /* page HTML controls background image */
+  background: transparent;
 }
 
 /* =========================================
@@ -42,69 +42,54 @@ html, body {
 ========================================= */
 .silver-text {
   color: var(--silver);
-  text-shadow: 0 0 8px rgba(0,0,0,0.7);
+  text-shadow: 0 0 6px rgba(0,0,0,0.6);
   font-weight: 600;
 }
 
 .silver-soft {
   color: var(--silver-soft);
-  text-shadow: 0 0 6px rgba(0,0,0,0.6);
+  text-shadow: 0 0 4px rgba(0,0,0,0.5);
 }
 
 /* =========================================
-   CINEMATIC BLOCKS (GREEN / BLACK / BROWN)
+   CINEMATIC BLOCKS — LIGHTER FOR BACKGROUND VISIBILITY
 ========================================= */
 
-/* Green block — for CTAs, important sections */
 .block-green {
-  background: linear-gradient(
-    135deg,
-    rgba(31, 107, 58, 0.9),
-    rgba(47, 168, 90, 0.85)
-  );
-  border: 1px solid rgba(47, 168, 90, 0.9);
-  box-shadow: 0 0 24px rgba(47, 168, 90, 0.6);
-  border-radius: 16px;
-  padding: 24px;
-  backdrop-filter: blur(6px);
-}
-
-/* Black block — for headers, nav, footer */
-.block-black {
-  background: linear-gradient(
-    135deg,
-    rgba(5, 6, 7, 0.95),
-    rgba(15, 18, 20, 0.9)
-  );
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 0 28px rgba(0,0,0,0.85);
-  border-radius: 16px;
+  background: rgba(31, 107, 58, 0.55);
+  border: 1px solid rgba(47, 168, 90, 0.65);
+  box-shadow: 0 0 18px rgba(47, 168, 90, 0.45);
+  border-radius: 14px;
   padding: 20px;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(4px);
 }
 
-/* Brown block — for content sections, service cards */
-.block-brown {
-  background: linear-gradient(
-    135deg,
-    rgba(92, 58, 32, 0.95),
-    rgba(130, 78, 44, 0.9)
-  );
-  border: 1px solid rgba(130, 78, 44, 0.95);
-  box-shadow: 0 0 24px rgba(130, 78, 44, 0.7);
-  border-radius: 16px;
-  padding: 24px;
+.block-black {
+  background: rgba(5, 6, 7, 0.65);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 0 22px rgba(0,0,0,0.7);
+  border-radius: 14px;
+  padding: 20px;
   backdrop-filter: blur(6px);
+}
+
+.block-brown {
+  background: rgba(92, 58, 32, 0.55);
+  border: 1px solid rgba(130, 78, 44, 0.65);
+  box-shadow: 0 0 18px rgba(130, 78, 44, 0.45);
+  border-radius: 14px;
+  padding: 20px;
+  backdrop-filter: blur(4px);
 }
 
 /* =========================================
-   NAVIGATION
+   NAVIGATION — FIXED SPACING
 ========================================= */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 6vw;
+  padding: 12px 6vw;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -114,67 +99,52 @@ html, body {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 0 0 18px 18px;
-  background: linear-gradient(
-    to bottom,
-    rgba(5, 6, 7, 0.96),
-    rgba(5, 6, 7, 0.85)
-  );
-  border-bottom: 2px solid var(--chrome-edge);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.8);
+  background: rgba(5, 6, 7, 0.75);
+  border-bottom: 1px solid var(--chrome-edge);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.6);
   z-index: -1;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .nav-logo {
-  height: 60px;
+  height: 52px;
   width: auto;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.8));
 }
 
 .brand-text {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  letter-spacing: 1px;
 }
 
 /* NAV LINKS */
 .nav-links {
   display: flex;
-  gap: 26px;
+  gap: 22px;
   list-style: none;
 }
 
 .nav-links a {
   color: var(--silver);
   text-decoration: none;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.5px;
-  padding-bottom: 4px;
+  padding-bottom: 3px;
   transition: 0.25s ease;
-}
-
-.nav-links a:hover {
-  color: var(--neon-green);
-  text-shadow: 0 0 10px var(--neon-green);
-  transform: translateY(-2px);
 }
 
 .nav-links a.active {
   border-bottom: 2px solid var(--neon-green);
   color: var(--neon-green);
-  text-shadow: 0 0 10px var(--neon-green);
 }
 
 /* BURGER MENU */
 .burger {
-  width: 28px;
+  width: 26px;
   cursor: pointer;
   display: none;
   flex-direction: column;
@@ -186,7 +156,6 @@ html, body {
   width: 100%;
   background: var(--silver);
   border-radius: 4px;
-  transition: 0.2s;
 }
 
 /* MOBILE MENU */
@@ -196,31 +165,18 @@ html, body {
   right: -100%;
   width: 70vw;
   height: 100vh;
-  background: rgba(5, 6, 7, 0.96);
-  backdrop-filter: blur(14px);
+  background: rgba(5, 6, 7, 0.9);
+  backdrop-filter: blur(10px);
   padding: 40px 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   transition: 0.3s ease;
   z-index: 9999;
-  border-left: 1px solid var(--chrome-edge);
 }
 
 .mobile-menu.open {
   right: 0;
-}
-
-.mobile-menu a {
-  color: var(--silver);
-  text-decoration: none;
-  font-size: 1.2rem;
-  text-shadow: 0 0 6px rgba(0,0,0,0.7);
-}
-
-.mobile-back {
-  margin-bottom: 10px;
-  font-size: 1rem;
 }
 
 @media (max-width: 900px) {
@@ -229,57 +185,42 @@ html, body {
 }
 
 /* =========================================
-   HEADERS (HERO / SUB-HEADER)
+   HEADERS — FIXED OVERLAP + LIGHTER BLOCK
 ========================================= */
-.hero,
-.sub-hero,
-.sub-header {
-  padding: 80px 6vw 40px;
+.sub-header,
+.hero {
+  padding: 60px 6vw 40px;
   text-align: center;
 }
 
-.sub-hero-inner,
-.sub-header-inner {
+.sub-header-inner,
+.hero-inner {
   max-width: 720px;
   margin: 0 auto;
-}
-
-/* Put a black block behind header content */
-.sub-hero-inner,
-.sub-header-inner {
   position: relative;
 }
 
-.sub-hero-inner::before,
-.sub-header-inner::before {
+.sub-header-inner::before,
+.hero-inner::before {
   content: "";
   position: absolute;
-  inset: -18px;
-  border-radius: 18px;
-  background: linear-gradient(
-    135deg,
-    rgba(5, 6, 7, 0.96),
-    rgba(15, 18, 20, 0.9)
-  );
+  inset: -12px;
+  border-radius: 14px;
+  background: rgba(5, 6, 7, 0.55);
   border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 0 28px rgba(0,0,0,0.85);
+  box-shadow: 0 0 18px rgba(0,0,0,0.6);
   z-index: -1;
 }
 
 /* =========================================
-   MAIN LAYOUT
+   MAIN LAYOUT — LIGHTER BLOCKS
 ========================================= */
 .page-main {
   padding: 20px 6vw 60px;
 }
 
-/* Sections get brown blocks by default */
 .section {
-  margin: 24px 0;
-}
-
-.section.light,
-.section.dark {
+  margin: 20px 0;
   position: relative;
 }
 
@@ -287,75 +228,40 @@ html, body {
 .section.dark::before {
   content: "";
   position: absolute;
-  inset: -10px;
-  border-radius: 18px;
-  background: linear-gradient(
-    135deg,
-    rgba(92, 58, 32, 0.95),
-    rgba(130, 78, 44, 0.9)
-  );
-  border: 1px solid rgba(130, 78, 44, 0.95);
-  box-shadow: 0 0 24px rgba(130, 78, 44, 0.7);
+  inset: -8px;
+  border-radius: 14px;
+  background: rgba(92, 58, 32, 0.45);
+  border: 1px solid rgba(130, 78, 44, 0.55);
+  box-shadow: 0 0 14px rgba(130, 78, 44, 0.4);
   z-index: -1;
 }
 
-/* Narrow sections (Estimate / Contact forms) */
-.narrow {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
 /* =========================================
-   TITLES
-========================================= */
-.section-title {
-  font-size: 1.6rem;
-  margin-bottom: 18px;
-}
-
-/* Put green block behind important titles if needed */
-.section-title.block-green {
-  display: inline-block;
-}
-
-/* =========================================
-   BUTTONS
+   BUTTONS — CENTERED & EVEN
 ========================================= */
 .bubble-btn {
   padding: 12px 26px;
   border-radius: 999px;
   font-weight: 600;
-  text-decoration: none;
-  transition: 0.25s ease;
   letter-spacing: 0.5px;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  text-align: center;
 }
 
 .bubble-btn.primary {
   background: var(--green-main);
   color: #fff;
-  box-shadow: 0 0 18px rgba(47, 168, 90, 0.6);
-}
-
-.bubble-btn.primary:hover {
-  background: var(--green-glow);
-  box-shadow: 0 0 24px rgba(47, 168, 90, 0.8);
-  transform: translateY(-1px);
 }
 
 .bubble-btn.secondary {
-  background: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.15);
   color: var(--silver);
-  border: 1px solid rgba(255,255,255,0.25);
-}
-
-.bubble-btn.secondary:hover {
-  background: rgba(255,255,255,0.18);
 }
 
 /* =========================================
-   FORMS (Contact / Estimate / Services)
+   FORMS — CLEANER SPACING
 ========================================= */
 form {
   display: flex;
@@ -363,130 +269,34 @@ form {
   gap: 14px;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-label {
-  font-size: 0.95rem;
-  color: var(--silver-soft);
-}
-
 input,
 textarea {
   padding: 10px 12px;
   border-radius: 10px;
   border: 1px solid rgba(255,255,255,0.25);
-  background: rgba(5, 6, 7, 0.85);
+  background: rgba(5, 6, 7, 0.75);
   color: var(--silver);
-  outline: none;
-}
-
-input:focus,
-textarea:focus {
-  border-color: var(--green-glow);
-  box-shadow: 0 0 10px rgba(47, 168, 90, 0.7);
-}
-
-/* Service forms get green blocks */
-.service-form {
-  margin-top: 18px;
-  border-radius: 16px;
-  padding: 20px;
-  background: linear-gradient(
-    135deg,
-    rgba(31, 107, 58, 0.9),
-    rgba(47, 168, 90, 0.85)
-  );
-  border: 1px solid rgba(47, 168, 90, 0.9);
-  box-shadow: 0 0 24px rgba(47, 168, 90, 0.6);
 }
 
 /* =========================================
-   GALLERY
+   GALLERY — LIGHTER BLOCK
 ========================================= */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
-
-.expanded-gallery {
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
-
-.gallery-item {
-  position: relative;
-  height: 200px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--silver-soft);
-  font-size: 1rem;
-  text-align: center;
-  padding: 12px;
-}
-
-/* Black block behind gallery items */
 .gallery-item::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  background: linear-gradient(
-    135deg,
-    rgba(5, 6, 7, 0.95),
-    rgba(15, 18, 20, 0.9)
-  );
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 0 24px rgba(0,0,0,0.85);
-  z-index: -1;
+  background: rgba(5, 6, 7, 0.55);
+  box-shadow: 0 0 14px rgba(0,0,0,0.6);
 }
 
 /* =========================================
-   FOOTER
+   FOOTER — LIGHTER BLOCK
 ========================================= */
-.footer {
-  padding: 20px 6vw 30px;
-  text-align: center;
-  color: var(--silver-soft);
-  position: relative;
-}
-
 .footer::before {
-  content: "";
-  position: absolute;
-  inset: -10px 0 0 0;
-  background: linear-gradient(
-    to top,
-    rgba(5, 6, 7, 0.96),
-    rgba(5, 6, 7, 0.85)
-  );
-  border-top: 1px solid rgba(255,255,255,0.18);
-  box-shadow: 0 -6px 24px rgba(0,0,0,0.8);
-  z-index: -1;
+  background: rgba(5, 6, 7, 0.55);
+  box-shadow: 0 -4px 14px rgba(0,0,0,0.6);
 }
 
 /* =========================================
-   HINT TEXT
+   SPARK PARTICLES
 ========================================= */
-.hint {
-  font-size: 0.9rem;
-  margin-top: 8px;
-}
-
-/* =========================================
-   SPARK PARTICLES (if used)
-========================================= */
-@keyframes sparks {
-  0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
-  10% { opacity: 1; }
-  100% { transform: translateY(120vh) translateX(40px) rotate(360deg); opacity: 0; }
-}
-
 .spark {
   position: fixed;
   top: -20px;
@@ -497,5 +307,4 @@ textarea:focus {
   filter: blur(1px);
   animation: sparks linear infinite;
   z-index: -1;
-  pointer-events: none;
 }
