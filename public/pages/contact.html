@@ -2,59 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact — Kevin’s Tree Service</title>
 
-  <!-- Favicon -->
+  <title>Contact — Kevin’s Tree Service LLC</title>
+
   <link rel="icon" type="image/png" href="/img/kev-log.png">
-
-  <!-- Social Preview -->
-  <meta property="og:title" content="Kevin’s Tree Service LLC">
-  <meta property="og:description" content="Tree removal, trimming, cleanup, and same‑day service in Atlanta.">
-  <meta property="og:image" content="/img/kev-log.png">
-  <meta property="og:type" content="website">
-
   <link rel="stylesheet" href="/css/style.css">
-
-  <style>
-    /* GLOBAL BACKGROUND */
-    body {
-      background: url('/img/kevins-tree-service-logo.png') center/cover no-repeat fixed;
-      background-color: #000;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-    }
-
-    /* Make content transparent so background shows */
-    .section.light,
-    .section.dark,
-    header.sub-header {
-      background: transparent !important;
-    }
-
-    /* Spark layer */
-    #sparkContainer {
-      pointer-events: none;
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-    }
-
-    /* Foreground content */
-    nav, .mobile-menu, .contact-block, footer {
-      position: relative;
-      z-index: 2;
-    }
-  </style>
 </head>
 
-<body>
+<body style="
+  background: url('/img/kevins-tree-service-logo.png') top left/cover no-repeat fixed;
+  background-color: #000;
+">
 
-<!-- SPARK PARTICLES -->
 <div id="sparkContainer"></div>
 
-<nav class="navbar">
+<!-- NAVIGATION -->
+<nav class="navbar block-black">
   <div class="brand">
     <img src="/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
     <span class="brand-text silver-text">KEVIN’S TREE SERVICE LLC</span>
@@ -75,8 +40,9 @@
   </div>
 </nav>
 
+<!-- MOBILE MENU -->
 <div id="mobileMenu" class="mobile-menu">
-  <a href="javascript:history.back()" class="mobile-back silver-text">← Back</a>
+  <a class="mobile-back silver-text" onclick="toggleMenu()">← Close</a>
   <a href="/index.html">Home</a>
   <a href="/pages/services.html">Services</a>
   <a href="/pages/gallery.html">Gallery</a>
@@ -86,27 +52,43 @@
   <a href="/pages/admin.html">Admin</a>
 </div>
 
+<!-- HEADER -->
 <header class="sub-header">
-  <div class="sub-header-inner">
-    <h1 class="silver-text">Contact</h1>
-    <p class="silver-soft">Call, text, or email anytime.</p>
+  <div class="sub-header-inner block-black">
+    <h1 class="silver-text">Contact Us</h1>
+    <p class="silver-soft">Call, text, or send a quick message.</p>
   </div>
 </header>
 
+<!-- CONTACT SECTION -->
 <main class="page-main">
-  <section class="section light narrow contact-block">
 
-    <div class="contact-header">
-      <img src="/img/kev-log.png" alt="Kevin’s Tree Service Logo" class="contact-logo">
-      <div class="contact-info">
-        <p class="silver-text"><strong>Phone:</strong> <a href="tel:14705156134" class="silver-text">470‑515‑6134</a></p>
-        <p class="silver-text"><strong>Email:</strong> <a href="mailto:kevinmosley2000@gmail.com" class="silver-text">kevinmosley2000@gmail.com</a></p>
-      </div>
+  <section class="section light block-brown narrow">
+
+    <h2 class="silver-text">Get In Touch</h2>
+
+    <p class="silver-soft" style="margin-bottom:20px;">
+      We respond fast — usually within minutes.
+    </p>
+
+    <!-- CONTACT INFO (NO FLOATING IMAGE) -->
+    <div class="block-black" style="padding:20px; border-radius:16px; margin-bottom:30px;">
+      <p class="silver-text" style="font-size:1.2rem;">
+        <strong>Phone:</strong> <a href="tel:4705156134" class="silver-text">470‑515‑6134</a>
+      </p>
+
+      <p class="silver-text" style="font-size:1.2rem;">
+        <strong>Email:</strong> <a href="mailto:contact@kevstreeservice.com" class="silver-text">
+          contact@kevstreeservice.com
+        </a>
+      </p>
     </div>
 
-    <h2 class="section-title small silver-text">Quick Message</h2>
+    <!-- MESSAGE FORM -->
+    <h2 class="silver-text">Send a Quick Message</h2>
 
-    <form id="contactForm">
+    <form id="contactForm" class="block-green" style="padding:20px; border-radius:16px;">
+
       <div class="field">
         <label for="cName">Name</label>
         <input id="cName" type="text" required>
@@ -122,24 +104,50 @@
         <textarea id="cMsg" rows="4" required></textarea>
       </div>
 
-      <button type="button" class="bubble-btn primary" onclick="sendContactEmail()">Send Message</button>
-      <p class="hint silver-soft">This opens your email app with the message ready to send.</p>
+      <button type="button" class="bubble-btn primary" onclick="sendContactEmail()">
+        Send Message
+      </button>
+
+      <p class="hint silver-soft">Your email app will open automatically.</p>
+
     </form>
 
   </section>
+
 </main>
 
-<footer class="footer">
+<!-- FOOTER -->
+<footer class="footer block-black">
   <p class="silver-soft">© 2026 Kevin’s Tree Service LLC</p>
 </footer>
-
-<script src="/js/app.js"></script>
 
 <script>
 function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
 }
 
+function sendContactEmail() {
+  const name = document.getElementById("cName").value;
+  const phone = document.getElementById("cPhone").value;
+  const msg = document.getElementById("cMsg").value;
+
+  const subject = encodeURIComponent("Website Contact Message");
+  const body = encodeURIComponent(
+`NEW MESSAGE FROM WEBSITE
+
+Name: ${name}
+Phone: ${phone}
+
+Message:
+${msg}
+
+Sent from Kevin’s Tree Service website`
+  );
+
+  window.location.href = `mailto:contact@kevstreeservice.com?subject=${subject}&body=${body}`;
+}
+
+// Sparks
 const sparkContainer = document.getElementById("sparkContainer");
 for (let i = 0; i < 25; i++) {
   const s = document.createElement("div");
