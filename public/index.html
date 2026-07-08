@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Kevin’s Tree Service LLC</title>
 
   <link rel="icon" type="image/png" href="/img/kev-log.png">
@@ -10,7 +12,7 @@
 </head>
 
 <body style="
-  background: url('/img/kevins-tree-service-logo.png') center/cover no-repeat fixed;
+  background: url('/img/kevins-tree-service-logo.png') top left/cover no-repeat fixed;
   background-color: #000;
 ">
 
@@ -18,12 +20,10 @@
 <div id="sparkContainer"></div>
 
 <!-- NAVIGATION -->
-<nav class="navbar">
+<nav class="navbar block-black">
   <div class="brand">
-    <img src="/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo" style="height:60px; width:auto;">
-    <span class="brand-text silver-text" style="font-size:1.4rem; font-weight:700;">
-      KEVIN’S TREE SERVICE LLC
-    </span>
+    <img src="/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
+    <span class="brand-text silver-text">KEVIN’S TREE SERVICE LLC</span>
   </div>
 
   <ul class="nav-links">
@@ -54,55 +54,34 @@
 </div>
 
 <!-- HERO -->
-<header class="hero" style="
-  background:transparent;
-  min-height:75vh;
-  padding:160px 6vw 140px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-">
-  <div class="hero-inner" style="max-width:900px; width:100%;">
-    <div class="hero-copy">
-      <h1 class="silver-text" style="font-size:2.6rem; font-weight:700; margin-bottom:20px;">
-        Tree Removal • Trimming • Cleanup
-      </h1>
+<header class="hero">
+  <div class="hero-inner block-black">
+    <h1 class="silver-text">Tree Removal • Trimming • Cleanup</h1>
+    <p class="silver-soft">Same‑day service • Free estimates • Fully insured</p>
 
-      <p class="silver-soft" style="font-size:1.2rem; margin-bottom:30px;">
-        Same‑day service • Free estimates • Fully insured
-      </p>
-
-      <div class="hero-actions" style="
-        display:flex;
-        gap:20px;
-        justify-content:center;
-        flex-wrap:wrap;
-        margin-top:20px;
-      ">
-        <a href="/pages/estimate.html" class="bubble-btn primary">Get Free Estimate</a>
-        <a href="tel:14705156134" class="bubble-btn secondary">Call Now</a>
-      </div>
+    <div class="hero-actions">
+      <a onclick="sendEstimateEmail()" class="bubble-btn primary">Get Free Estimate</a>
+      <a href="tel:4705156134" class="bubble-btn secondary">Call Now</a>
     </div>
   </div>
 </header>
 
 <!-- SERVICES PREVIEW -->
-<section class="section light" style="background:transparent;">
-  <h2 class="section-title silver-text" style="font-size:2rem;">Core Services</h2>
+<section class="section light block-brown">
+  <h2 class="section-title silver-text">Core Services</h2>
 
   <div class="card-grid">
-    <div class="card">
+    <div class="card block-black">
       <h3 class="silver-text">Tree Removal</h3>
       <p class="silver-soft">Safe, controlled removal near homes, fences, and power lines.</p>
     </div>
 
-    <div class="card">
+    <div class="card block-black">
       <h3 class="silver-text">Tree Trimming</h3>
       <p class="silver-soft">Shaping, thinning, roofline clearing, and storm‑risk reduction.</p>
     </div>
 
-    <div class="card">
+    <div class="card block-black">
       <h3 class="silver-text">Storm Cleanup</h3>
       <p class="silver-soft">Emergency response for downed trees and dangerous limbs.</p>
     </div>
@@ -110,17 +89,28 @@
 </section>
 
 <!-- CTA -->
-<section class="section dark bottom-cta" style="padding-bottom:160px; padding-top:80px; background:transparent;">
+<section class="section dark bottom-cta block-green">
   <h2 class="section-title silver-text">Ready to clear that tree?</h2>
   <p class="silver-soft">Send photos and details in under a minute.</p>
 
-  <div style="height:96px;"></div>
+  <a onclick="sendEstimateEmail()" class="bubble-btn primary cta-btn">Start Estimate</a>
+</section>
 
-  <a href="/pages/estimate.html" class="bubble-btn primary cta-btn">Start Estimate</a>
+<!-- CONTACT BLOCK -->
+<section class="section light block-black" style="text-align:center; margin-top:40px;">
+  <img src="/img/kev-log.png" alt="Kevin’s Tree Service Logo" style="height:90px; margin-bottom:20px;">
+
+  <p class="silver-text" style="font-size:1.2rem;">
+    <strong>Email:</strong> contact@kevstreeservice.com
+  </p>
+
+  <p class="silver-text" style="font-size:1.2rem;">
+    <strong>Phone:</strong> <a href="tel:4705156134" class="silver-text">470‑515‑6134</a>
+  </p>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer" style="background:transparent;">
+<footer class="footer block-black">
   <p class="silver-soft">© 2026 Kevin’s Tree Service LLC</p>
 </footer>
 
@@ -131,7 +121,20 @@ function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
 }
 
-// Generate sparks
+function sendEstimateEmail() {
+  const subject = encodeURIComponent("Free Estimate Request");
+  const body = encodeURIComponent(
+`FREE ESTIMATE REQUEST
+
+Please describe your tree issue and attach photos.
+
+Sent from Kevin’s Tree Service website`
+  );
+
+  window.location.href = `mailto:contact@kevstreeservice.com?subject=${subject}&body=${body}`;
+}
+
+// Sparks
 const sparkContainer = document.getElementById("sparkContainer");
 for (let i = 0; i < 25; i++) {
   const s = document.createElement("div");
