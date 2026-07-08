@@ -1,43 +1,106 @@
-<section class="section light about-section block-brown">
-  <div class="about-wrapper">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
 
-    <div class="about-text">
-      <h2 class="silver-text">Who We Are</h2>
-      <p class="silver-soft">
-        Kevin’s Tree Service LLC is a locally owned and operated tree care company serving
-        Atlanta and surrounding areas. With years of hands‑on experience, Kevin built this
-        business on one simple promise: <strong class="silver-text">treat every property like it’s your own.</strong>
-      </p>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <p class="silver-soft">
-        From small trims to full removals, Kevin handles every job personally — ensuring
-        safety, precision, and a clean yard when the work is done.
-      </p>
+  <title>About — Kevin’s Tree Service LLC</title>
 
-      <h2 class="silver-text">Why People Choose Us</h2>
-      <ul class="about-list silver-soft">
-        <li>✔ Fully insured</li>
-        <li>✔ Same‑day service</li>
-        <li>✔ Free written estimates</li>
-        <li>✔ Safe removals near structures</li>
-        <li>✔ Clean, professional job sites</li>
-        <li>✔ 10% referral discount</li>
-      </ul>
+  <link rel="icon" type="image/png" href="/img/kev-log.png">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
 
-      <h2 class="silver-text">Our Mission</h2>
-      <p class="silver-soft">
-        To provide fast, safe, and affordable tree services while delivering the kind of
-        customer experience that makes people say, “Call Kevin — he’ll take care of it.”
-      </p>
-    </div>
+<body style="
+  background: url('/img/kevins-tree-service-logo.png') top left/cover no-repeat fixed;
+  background-color: #000;
+">
 
+<div id="sparkContainer"></div>
+
+<!-- NAVIGATION -->
+<nav class="navbar block-black">
+  <div class="brand">
+    <img src="/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
+    <span class="brand-text silver-text">KEVIN’S TREE SERVICE LLC</span>
   </div>
+
+  <ul class="nav-links">
+    <li><a href="/index.html" class="silver-text">Home</a></li>
+    <li><a href="/pages/services.html" class="silver-text">Services</a></li>
+    <li><a href="/pages/gallery.html" class="silver-text">Gallery</a></li>
+    <li><a href="/pages/about.html" class="active silver-text">About</a></li>
+    <li><a href="/pages/estimate.html" class="silver-text">Free Estimate</a></li>
+    <li><a href="/pages/contact.html" class="silver-text">Contact</a></li>
+    <li><a href="/pages/admin.html" class="silver-text">Admin</a></li>
+  </ul>
+
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
+  <a class="mobile-back silver-text" onclick="toggleMenu()">← Close</a>
+  <a href="/index.html">Home</a>
+  <a href="/pages/services.html">Services</a>
+  <a href="/pages/gallery.html">Gallery</a>
+  <a href="/pages/about.html" class="active">About</a>
+  <a href="/pages/estimate.html">Free Estimate</a>
+  <a href="/pages/contact.html">Contact</a>
+  <a href="/pages/admin.html">Admin</a>
+</div>
+
+<!-- HEADER -->
+<header class="sub-header">
+  <div class="sub-header-inner block-black">
+    <h1 class="silver-text">About Kevin’s Tree Service</h1>
+    <p class="silver-soft">Local • Experienced • Fully Insured • Customer‑Focused</p>
+  </div>
+</header>
+
+<!-- ABOUT CONTENT -->
+<section class="section light block-brown">
+  <h2 class="silver-text">Who We Are</h2>
+  <p class="silver-soft">
+    Kevin’s Tree Service LLC is a locally owned and operated tree care company serving
+    Atlanta and surrounding areas. With years of hands‑on experience, Kevin built this
+    business on one simple promise:
+  </p>
+
+  <p class="silver-text" style="font-size:1.2rem; margin:10px 0;">
+    <strong>“Treat every property like it’s your own.”</strong>
+  </p>
+
+  <p class="silver-soft">
+    From small trims to full removals, Kevin handles every job personally — ensuring
+    safety, precision, and a clean yard when the work is done.
+  </p>
+
+  <h2 class="silver-text" style="margin-top:30px;">Why People Choose Us</h2>
+  <ul class="silver-soft" style="line-height:1.8;">
+    <li>✔ Fully insured</li>
+    <li>✔ Same‑day service</li>
+    <li>✔ Free written estimates</li>
+    <li>✔ Safe removals near structures</li>
+    <li>✔ Clean, professional job sites</li>
+    <li>✔ 10% referral discount</li>
+  </ul>
+
+  <h2 class="silver-text" style="margin-top:30px;">Our Mission</h2>
+  <p class="silver-soft">
+    To provide fast, safe, and affordable tree services while delivering the kind of
+    customer experience that makes people say:
+  </p>
+
+  <p class="silver-text" style="font-size:1.2rem; margin:10px 0;">
+    <strong>“Call Kevin — he’ll take care of it.”</strong>
+  </p>
 </section>
 
-<!-- ============================
-     CLIENT CONTACT FORM (NEW)
-============================= -->
-<section class="section light block-green" style="margin-top: 40px;">
+<!-- CONTACT FORM -->
+<section class="section light block-green" style="margin-top:40px;">
   <h2 class="silver-text">Send Us a Quick Message</h2>
   <p class="silver-soft">Fill out the fields below and your email app will open automatically.</p>
 
@@ -61,10 +124,8 @@
   </form>
 </section>
 
-<!-- ============================
-     CONTACT BLOCK AT BOTTOM
-============================= -->
-<section class="section light block-black" style="margin-top: 40px; text-align:center;">
+<!-- CONTACT INFO BLOCK -->
+<section class="section light block-black" style="text-align:center; margin-top:40px;">
   <img src="/img/kev-log.png" alt="Kevin’s Tree Service Logo" style="height:90px; margin-bottom:20px;">
 
   <p class="silver-text" style="font-size:1.2rem;">
@@ -76,7 +137,16 @@
   </p>
 </section>
 
+<!-- FOOTER -->
+<footer class="footer block-black">
+  <p class="silver-soft">© 2026 Kevin’s Tree Service LLC</p>
+</footer>
+
 <script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("open");
+}
+
 function sendAboutEmail() {
   const name = document.getElementById("acName").value;
   const phone = document.getElementById("acPhone").value;
@@ -97,4 +167,18 @@ Sent from Kevin’s Tree Service website`
 
   window.location.href = `mailto:contact@kevstreeservice.com?subject=${subject}&body=${body}`;
 }
+
+// Sparks
+const sparkContainer = document.getElementById("sparkContainer");
+for (let i = 0; i < 25; i++) {
+  const s = document.createElement("div");
+  s.className = "spark";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.animationDuration = 2 + Math.random() * 3 + "s";
+  s.style.animationDelay = Math.random() * 3 + "s";
+  sparkContainer.appendChild(s);
+}
 </script>
+
+</body>
+</html>
