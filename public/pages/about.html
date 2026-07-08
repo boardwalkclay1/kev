@@ -9,6 +9,35 @@
 
   <link rel="icon" type="image/png" href="/img/kev-log.png">
   <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    body {
+      background: url('/img/kevins-tree-service-logo.png') center/cover no-repeat fixed;
+      background-color: #000;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Make sections transparent so background shows */
+    .section.light,
+    .section.dark,
+    header.sub-hero {
+      background: transparent !important;
+    }
+
+    #sparkContainer {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    nav, .mobile-menu, .about-section, .bottom-cta, footer {
+      position: relative;
+      z-index: 2;
+    }
+  </style>
 </head>
 
 <body>
