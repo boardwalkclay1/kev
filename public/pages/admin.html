@@ -2,18 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Admin Dashboard — Kevin’s Tree Service</title>
 
   <link rel="icon" type="image/png" href="/img/kev-log.png">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
+<body style="
+  background: url('/img/kevins-tree-service-logo.png') top left/cover no-repeat fixed;
+  background-color: #000;
+">
 
 <div id="sparkContainer"></div>
 
-<nav class="navbar">
+<!-- NAVIGATION -->
+<nav class="navbar block-black">
   <div class="brand">
     <img src="/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
     <span class="brand-text silver-text">KEVIN’S TREE SERVICE LLC</span>
@@ -34,8 +40,9 @@
   </div>
 </nav>
 
+<!-- MOBILE MENU -->
 <div id="mobileMenu" class="mobile-menu">
-  <a class="mobile-back silver-text" href="javascript:void(0)" onclick="toggleMenu()">← Close</a>
+  <a class="mobile-back silver-text" onclick="toggleMenu()">← Close</a>
   <a href="/index.html">Home</a>
   <a href="/pages/services.html">Services</a>
   <a href="/pages/gallery.html">Gallery</a>
@@ -45,51 +52,64 @@
   <a href="/pages/admin.html" class="active">Admin</a>
 </div>
 
-<main class="admin-layout">
+<!-- ADMIN LAYOUT -->
+<main class="admin-layout" style="display:flex; gap:30px; padding:40px 6vw;">
 
   <!-- SIDEBAR -->
-  <aside class="admin-sidebar">
-    <h2 class="silver-text">Dashboard</h2>
-    <ul class="admin-nav silver-soft">
-      <li class="active">Clients</li>
-      <li>Invoices</li>
-      <li>Proposals</li>
-      <li>Jobs</li>
+  <aside class="admin-sidebar block-black" style="
+    width:260px;
+    padding:24px;
+    border-radius:16px;
+    height:max-content;
+  ">
+    <h2 class="silver-text" style="margin-bottom:20px;">Dashboard</h2>
+
+    <ul class="admin-nav silver-soft" style="list-style:none; padding:0; margin-bottom:20px;">
+      <li class="active" style="margin-bottom:10px;">Clients</li>
+      <li style="margin-bottom:10px;">Invoices</li>
+      <li style="margin-bottom:10px;">Proposals</li>
+      <li style="margin-bottom:10px;">Jobs</li>
     </ul>
 
-    <button class="bubble-btn secondary admin-new-btn">+ New Client</button>
+    <button class="bubble-btn secondary admin-new-btn" style="width:100%;">+ New Client</button>
   </aside>
 
   <!-- MAIN CONTENT -->
-  <section class="admin-main">
+  <section class="admin-main" style="flex:1; display:flex; flex-direction:column; gap:30px;">
 
     <!-- TOP STATS -->
-    <div class="admin-stats">
-      <div class="admin-stat-card">
+    <div class="admin-stats" style="display:flex; gap:20px;">
+      <div class="admin-stat-card block-brown" style="flex:1; padding:20px; border-radius:14px;">
         <span class="label silver-soft">Active Clients</span>
-        <span class="value silver-text">24</span>
+        <span class="value silver-text" style="font-size:1.6rem;">24</span>
       </div>
-      <div class="admin-stat-card">
+      <div class="admin-stat-card block-brown" style="flex:1; padding:20px; border-radius:14px;">
         <span class="label silver-soft">Open Invoices</span>
-        <span class="value silver-text">$4,320</span>
+        <span class="value silver-text" style="font-size:1.6rem;">$4,320</span>
       </div>
-      <div class="admin-stat-card">
+      <div class="admin-stat-card block-brown" style="flex:1; padding:20px; border-radius:14px;">
         <span class="label silver-soft">Pending Proposals</span>
-        <span class="value silver-text">7</span>
+        <span class="value silver-text" style="font-size:1.6rem;">7</span>
       </div>
     </div>
 
     <!-- CLIENTS TABLE -->
-    <div class="admin-panel">
-      <div class="admin-panel-header">
+    <div class="admin-panel block-black" style="padding:24px; border-radius:16px;">
+      <div class="admin-panel-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
         <h2 class="silver-text">Clients</h2>
-        <input type="text" class="admin-search" placeholder="Search clients by name, phone, or address">
+        <input type="text" class="admin-search" placeholder="Search clients..." style="
+          padding:10px 14px;
+          border-radius:10px;
+          border:1px solid rgba(255,255,255,0.25);
+          background:rgba(5,6,7,0.75);
+          color:var(--silver);
+        ">
       </div>
 
-      <div class="admin-table-wrapper">
-        <table class="admin-table">
+      <div class="admin-table-wrapper" style="overflow-x:auto;">
+        <table class="admin-table" style="width:100%; border-collapse:collapse;">
           <thead>
-            <tr>
+            <tr class="silver-text">
               <th>Client</th>
               <th>Phone</th>
               <th>Email</th>
@@ -98,7 +118,7 @@
               <th>Invoices</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="silver-soft">
             <tr>
               <td>John Miller</td>
               <td>(470) 555‑0134</td>
@@ -129,17 +149,18 @@
     </div>
 
     <!-- INVOICES + PROPOSALS -->
-    <div class="admin-grid-two">
+    <div class="admin-grid-two" style="display:flex; gap:30px;">
 
-      <div class="admin-panel">
-        <div class="admin-panel-header">
+      <div class="admin-panel block-black" style="flex:1; padding:24px; border-radius:16px;">
+        <div class="admin-panel-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
           <h2 class="silver-text">Invoices</h2>
           <button class="bubble-btn secondary small-btn">+ New Invoice</button>
         </div>
-        <div class="admin-table-wrapper">
-          <table class="admin-table compact">
+
+        <div class="admin-table-wrapper" style="overflow-x:auto;">
+          <table class="admin-table compact" style="width:100%; border-collapse:collapse;">
             <thead>
-              <tr>
+              <tr class="silver-text">
                 <th>#</th>
                 <th>Client</th>
                 <th>Amount</th>
@@ -147,7 +168,7 @@
                 <th>Due</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="silver-soft">
               <tr>
                 <td>INV‑1043</td>
                 <td>Sarah Thompson</td>
@@ -174,15 +195,16 @@
         </div>
       </div>
 
-      <div class="admin-panel">
-        <div class="admin-panel-header">
+      <div class="admin-panel block-black" style="flex:1; padding:24px; border-radius:16px;">
+        <div class="admin-panel-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
           <h2 class="silver-text">Proposals</h2>
           <button class="bubble-btn secondary small-btn">+ New Proposal</button>
         </div>
-        <div class="admin-table-wrapper">
-          <table class="admin-table compact">
+
+        <div class="admin-table-wrapper" style="overflow-x:auto;">
+          <table class="admin-table compact" style="width:100%; border-collapse:collapse;">
             <thead>
-              <tr>
+              <tr class="silver-text">
                 <th>#</th>
                 <th>Client</th>
                 <th>Scope</th>
@@ -190,7 +212,7 @@
                 <th>Status</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="silver-soft">
               <tr>
                 <td>PROP‑207</td>
                 <td>Brightside Church</td>
@@ -222,7 +244,7 @@
   </section>
 </main>
 
-<footer class="footer">
+<footer class="footer block-black">
   <p class="silver-soft">© 2026 Kevin’s Tree Service LLC</p>
 </footer>
 
