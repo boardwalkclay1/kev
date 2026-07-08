@@ -1,89 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>About — Kevin’s Tree Service LLC</title>
-
-  <link rel="icon" type="image/png" href="/img/kev-log.png">
-  <link rel="stylesheet" href="/css/style.css">
-
-  <style>
-    body {
-      background: url('/img/kevins-tree-service-logo.png') center/cover no-repeat fixed;
-      background-color: #000;
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Make sections transparent so background shows */
-    .section.light,
-    .section.dark,
-    header.sub-hero {
-      background: transparent !important;
-    }
-
-    #sparkContainer {
-      pointer-events: none;
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-    }
-
-    nav, .mobile-menu, .about-section, .bottom-cta, footer {
-      position: relative;
-      z-index: 2;
-    }
-  </style>
-</head>
-
-<body>
-
-<div id="sparkContainer"></div>
-
-<nav class="navbar">
-  <div class="brand">
-    <img src="/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
-    <span class="brand-text silver-text">KEVIN’S TREE SERVICE LLC</span>
-  </div>
-
-  <ul class="nav-links">
-    <li><a href="/index.html" class="silver-text">Home</a></li>
-    <li><a href="/pages/services.html" class="silver-text">Services</a></li>
-    <li><a href="/pages/gallery.html" class="silver-text">Gallery</a></li>
-    <li><a href="/pages/about.html" class="active silver-text">About</a></li>
-    <li><a href="/pages/estimate.html" class="silver-text">Free Estimate</a></li>
-    <li><a href="/pages/contact.html" class="silver-text">Contact</a></li>
-    <li><a href="/pages/admin.html" class="silver-text">Admin</a></li>
-  </ul>
-
-  <div class="burger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
-
-<div id="mobileMenu" class="mobile-menu">
-  <a class="mobile-back silver-text" onclick="toggleMenu()">← Close</a>
-  <a href="/index.html">Home</a>
-  <a href="/pages/services.html">Services</a>
-  <a href="/pages/gallery.html">Gallery</a>
-  <a href="/pages/about.html" class="active">About</a>
-  <a href="/pages/estimate.html">Free Estimate</a>
-  <a href="/pages/contact.html">Contact</a>
-  <a href="/pages/admin.html">Admin</a>
-</div>
-
-<header class="sub-hero">
-  <div class="sub-hero-inner">
-    <h1 class="silver-text">About Kevin’s Tree Service</h1>
-    <p class="silver-soft">Local • Experienced • Fully Insured • Customer‑Focused</p>
-  </div>
-</header>
-
-<section class="section light about-section">
+<section class="section light about-section block-brown">
   <div class="about-wrapper">
 
     <div class="about-text">
@@ -116,43 +31,70 @@
       </p>
     </div>
 
-    <div class="about-image-box">
-      <img src="/img/kev-log.png" alt="Kevin’s Tree Service Logo" class="about-logo-large">
-    </div>
-
   </div>
 </section>
 
-<section class="section dark bottom-cta">
-  <h2 class="section-title silver-text">Need Tree Work Done?</h2>
-  <p class="silver-soft">We respond fast — send photos and get a free estimate today.</p>
+<!-- ============================
+     CLIENT CONTACT FORM (NEW)
+============================= -->
+<section class="section light block-green" style="margin-top: 40px;">
+  <h2 class="silver-text">Send Us a Quick Message</h2>
+  <p class="silver-soft">Fill out the fields below and your email app will open automatically.</p>
 
-  <div style="height: 96px;"></div>
+  <form id="aboutContactForm" class="narrow">
+    <div class="field">
+      <label for="acName">Your Name</label>
+      <input id="acName" type="text" required>
+    </div>
 
-  <a href="/pages/estimate.html" class="bubble-btn primary cta-btn">Request Estimate</a>
+    <div class="field">
+      <label for="acPhone">Your Phone</label>
+      <input id="acPhone" type="tel" required>
+    </div>
+
+    <div class="field">
+      <label for="acMsg">Message</label>
+      <textarea id="acMsg" rows="4" required></textarea>
+    </div>
+
+    <button type="button" class="bubble-btn primary" onclick="sendAboutEmail()">Send Message</button>
+  </form>
 </section>
 
-<footer class="footer">
-  <p class="silver-soft">© 2026 Kevin’s Tree Service LLC</p>
-</footer>
+<!-- ============================
+     CONTACT BLOCK AT BOTTOM
+============================= -->
+<section class="section light block-black" style="margin-top: 40px; text-align:center;">
+  <img src="/img/kev-log.png" alt="Kevin’s Tree Service Logo" style="height:90px; margin-bottom:20px;">
 
-<script src="/js/app.js"></script>
+  <p class="silver-text" style="font-size:1.2rem;">
+    <strong>Email:</strong> contact@kevstreeservice.com
+  </p>
+
+  <p class="silver-text" style="font-size:1.2rem;">
+    <strong>Phone:</strong> <a href="tel:4705156134" class="silver-text">470‑515‑6134</a>
+  </p>
+</section>
 
 <script>
-function toggleMenu() {
-  document.getElementById("mobileMenu").classList.toggle("open");
-}
+function sendAboutEmail() {
+  const name = document.getElementById("acName").value;
+  const phone = document.getElementById("acPhone").value;
+  const msg = document.getElementById("acMsg").value;
 
-const sparkContainer = document.getElementById("sparkContainer");
-for (let i = 0; i < 25; i++) {
-  const s = document.createElement("div");
-  s.className = "spark";
-  s.style.left = Math.random() * 100 + "vw";
-  s.style.animationDuration = 2 + Math.random() * 3 + "s";
-  s.style.animationDelay = Math.random() * 3 + "s";
-  sparkContainer.appendChild(s);
+  const subject = encodeURIComponent("Website Contact Message");
+  const body = encodeURIComponent(
+`NEW MESSAGE FROM WEBSITE
+
+Name: ${name}
+Phone: ${phone}
+
+Message:
+${msg}
+
+Sent from Kevin’s Tree Service website`
+  );
+
+  window.location.href = `mailto:contact@kevstreeservice.com?subject=${subject}&body=${body}`;
 }
 </script>
-
-</body>
-</html>
