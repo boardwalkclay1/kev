@@ -5,57 +5,23 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Services — Kevin’s Tree Service</title>
+  <title>Services — Kevin’s Tree Service LLC</title>
 
   <link rel="icon" type="image/png" href="/img/kev-log.png">
   <link rel="stylesheet" href="/css/style.css">
-
-  <style>
-    /* GLOBAL BACKGROUND — NEVER CENTERED */
-    body {
-      background: url('/img/kevins-tree-service-logo.png') top left / cover no-repeat fixed;
-      background-color: #000;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-    }
-
-    /* Make sections transparent so background shows */
-    .section.light,
-    .section.dark,
-    header.sub-header {
-      background: transparent !important;
-    }
-
-    /* Foreground content */
-    nav, .mobile-menu, .page-main, footer {
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Service form styling */
-    .service-form {
-      display: none;
-      margin-top: 20px;
-      padding: 20px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 12px;
-    }
-
-    .service-form input,
-    .service-form textarea {
-      margin-bottom: 12px;
-      width: 100%;
-    }
-  </style>
 </head>
 
-<body>
+<body style="
+  background: url('/img/kevins-tree-service-logo.png') top left/cover no-repeat fixed;
+  background-color: #000;
+">
 
-<nav class="navbar">
+<div id="sparkContainer"></div>
+
+<!-- NAVIGATION -->
+<nav class="navbar block-black">
   <div class="brand">
-    <img src="/img/kev-log.png" class="nav-logo">
+    <img src="/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
     <span class="brand-text silver-text">KEVIN’S TREE SERVICE LLC</span>
   </div>
 
@@ -74,6 +40,7 @@
   </div>
 </nav>
 
+<!-- MOBILE MENU -->
 <div id="mobileMenu" class="mobile-menu">
   <a class="mobile-back silver-text" onclick="toggleMenu()">← Close</a>
   <a href="/index.html">Home</a>
@@ -85,84 +52,104 @@
   <a href="/pages/admin.html">Admin</a>
 </div>
 
+<!-- HEADER -->
 <header class="sub-header">
-  <div class="sub-header-inner">
-    <h1 class="silver-text">Services</h1>
-    <p class="silver-soft">Choose a service below and request it instantly.</p>
+  <div class="sub-header-inner block-black">
+    <h1 class="silver-text">Our Services</h1>
+    <p class="silver-soft">Professional tree care with same‑day availability.</p>
   </div>
 </header>
 
+<!-- MAIN SERVICES -->
 <main class="page-main">
 
   <!-- TREE REMOVAL -->
-  <section class="section light service-block">
+  <section class="section light block-brown">
     <h2 class="section-title silver-text">Tree Removal</h2>
     <p class="silver-soft">
       Safe, controlled removal of hazardous, dead, leaning, or storm‑damaged trees.
-      <br><strong class="silver-text">Price Range: $250 – $2,500+</strong>
+      <br><strong class="silver-text">Typical Range: $250 – $2,500+</strong>
     </p>
 
-    <button class="bubble-btn primary" onclick="openForm('Tree Removal')">Request This Service</button>
-
-    <div class="service-form" id="form-Tree Removal">
-      <h3 class="silver-text">Request Tree Removal</h3>
-
-      <input id="name-Tree Removal" placeholder="Your Name">
-      <input id="address-Tree Removal" placeholder="Your Address">
-      <input id="phone-Tree Removal" placeholder="Your Phone Number">
-      <textarea id="details-Tree Removal" placeholder="Describe the tree or issue"></textarea>
-
-      <button class="bubble-btn secondary" onclick="sendEmail('Tree Removal')">Send Request</button>
+    <div class="service-actions" style="margin-top:20px;">
+      <a onclick="sendServiceEmail('Tree Removal')" class="bubble-btn primary">Request Tree Removal</a>
+      <a href="tel:4705156134" class="bubble-btn secondary">Call Now</a>
     </div>
   </section>
 
   <!-- TREE TRIMMING -->
-  <section class="section light service-block">
+  <section class="section light block-brown">
     <h2 class="section-title silver-text">Tree Trimming & Pruning</h2>
     <p class="silver-soft">
       Structural pruning, thinning, shaping, roofline clearing, and deadwood removal.
-      <br><strong class="silver-text">Price Range: $150 – $900+</strong>
+      <br><strong class="silver-text">Typical Range: $150 – $900+</strong>
     </p>
 
-    <button class="bubble-btn primary" onclick="openForm('Tree Trimming')">Request This Service</button>
-
-    <div class="service-form" id="form-Tree Trimming">
-      <h3 class="silver-text">Request Tree Trimming</h3>
-
-      <input id="name-Tree Trimming" placeholder="Your Name">
-      <input id="address-Tree Trimming" placeholder="Your Address">
-      <input id="phone-Tree Trimming" placeholder="Your Phone Number">
-      <textarea id="details-Tree Trimming" placeholder="Describe the trimming needed"></textarea>
-
-      <button class="bubble-btn secondary" onclick="sendEmail('Tree Trimming')">Send Request</button>
+    <div class="service-actions" style="margin-top:20px;">
+      <a onclick="sendServiceEmail('Tree Trimming')" class="bubble-btn primary">Request Trimming</a>
+      <a href="tel:4705156134" class="bubble-btn secondary">Call Now</a>
     </div>
   </section>
 
   <!-- STORM CLEANUP -->
-  <section class="section light service-block">
-    <h2 class="section-title silver-text">Storm & Emergency Response</h2>
+  <section class="section light block-brown">
+    <h2 class="section-title silver-text">Storm & Emergency Cleanup</h2>
     <p class="silver-soft">
       Fast removal of downed trees and limbs after storms.
-      <br><strong class="silver-text">Price Range: $300 – $3,500+</strong>
+      <br><strong class="silver-text">Typical Range: $300 – $3,500+</strong>
     </p>
 
-    <button class="bubble-btn primary" onclick="openForm('Storm Cleanup')">Request This Service</button>
+    <div class="service-actions" style="margin-top:20px;">
+      <a onclick="sendServiceEmail('Storm Cleanup')" class="bubble-btn primary">Request Storm Cleanup</a>
+      <a href="tel:4705156134" class="bubble-btn secondary">Call Now</a>
+    </div>
+  </section>
 
-    <div class="service-form" id="form-Storm Cleanup">
-      <h3 class="silver-text">Request Storm Cleanup</h3>
+  <!-- LAND CLEARING -->
+  <section class="section light block-brown">
+    <h2 class="section-title silver-text">Land Clearing</h2>
+    <p class="silver-soft">
+      Brush removal, small tree clearing, and property preparation for construction.
+      <br><strong class="silver-text">Typical Range: $500 – $6,000+</strong>
+    </p>
 
-      <input id="name-Storm Cleanup" placeholder="Your Name">
-      <input id="address-Storm Cleanup" placeholder="Your Address">
-      <input id="phone-Storm Cleanup" placeholder="Your Phone Number">
-      <textarea id="details-Storm Cleanup" placeholder="Describe the storm damage"></textarea>
+    <div class="service-actions" style="margin-top:20px;">
+      <a onclick="sendServiceEmail('Land Clearing')" class="bubble-btn primary">Request Land Clearing</a>
+      <a href="tel:4705156134" class="bubble-btn secondary">Call Now</a>
+    </div>
+  </section>
 
-      <button class="bubble-btn secondary" onclick="sendEmail('Storm Cleanup')">Send Request</button>
+  <!-- STUMP GRINDING -->
+  <section class="section light block-brown">
+    <h2 class="section-title silver-text">Stump Grinding</h2>
+    <p class="silver-soft">
+      Full stump grinding and root removal for a clean, level yard.
+      <br><strong class="silver-text">Typical Range: $120 – $450+</strong>
+    </p>
+
+    <div class="service-actions" style="margin-top:20px;">
+      <a onclick="sendServiceEmail('Stump Grinding')" class="bubble-btn primary">Request Stump Grinding</a>
+      <a href="tel:4705156134" class="bubble-btn secondary">Call Now</a>
     </div>
   </section>
 
 </main>
 
-<footer class="footer">
+<!-- CONTACT BLOCK -->
+<section class="section light block-black" style="text-align:center; margin-top:40px;">
+  <img src="/img/kev-log.png" alt="Kevin’s Tree Service Logo" style="height:80px; margin-bottom:20px;">
+
+  <p class="silver-text" style="font-size:1.2rem;">
+    <strong>Email:</strong> contact@kevstreeservice.com
+  </p>
+
+  <p class="silver-text" style="font-size:1.2rem;">
+    <strong>Phone:</strong> <a href="tel:4705156134" class="silver-text">470‑515‑6134</a>
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer block-black">
   <p class="silver-soft">© 2026 Kevin’s Tree Service LLC</p>
 </footer>
 
@@ -171,179 +158,30 @@ function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
 }
 
-function openForm(service) {
-  document.querySelectorAll('.service-form').forEach(f => f.style.display = 'none');
-  document.getElementById('form-' + service).style.display = 'block';
-}
-
-function sendEmail(service) {
-  const name = document.getElementById('name-' + service).value;
-  const address = document.getElementById('address-' + service).value;
-  const phone = document.getElementById('phone-' + service).value;
-  const details = document.getElementById('details-' + service).value;
-
+function sendServiceEmail(service) {
   const subject = encodeURIComponent(service + " Request");
   const body = encodeURIComponent(
 `SERVICE REQUEST: ${service}
 
-Client Name: ${name}
-Address: ${address}
-Phone: ${phone}
-
-Details:
-${details}
-
-Price Range: (see website section for estimate)
+Please describe your tree issue and attach photos.
 
 Sent from Kevin’s Tree Service website`
   );
 
-  window.location.href = `mailto:kevinmosley2000@gmail.com?subject=${subject}&body=${body}`;
+  window.location.href = `mailto:contact@kevstreeservice.com?subject=${subject}&body=${body}`;
+}
+
+// Sparks
+const sparkContainer = document.getElementById("sparkContainer");
+for (let i = 0; i < 25; i++) {
+  const s = document.createElement("div");
+  s.className = "spark";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.animationDuration = 2 + Math.random() * 3 + "s";
+  s.style.animationDelay = Math.random() * 3 + "s";
+  sparkContainer.appendChild(s);
 }
 </script>
-
-</body>
-</html>
-  <a href="/index.html">Home</a>
-  <a href="/pages/services.html" class="active">Services</a>
-  <a href="/pages/gallery.html">Gallery</a>
-  <a href="/pages/about.html">About</a>
-  <a href="/pages/estimate.html">Free Estimate</a>
-  <a href="/pages/contact.html">Contact</a>
-  <a href="/pages/admin.html">Admin</a>
-</div>
-
-<header class="sub-header">
-  <div class="sub-header-inner">
-    <h1 class="silver-text">Services</h1>
-    <p class="silver-soft">Choose a service below and request it instantly.</p>
-  </div>
-</header>
-
-<main class="page-main">
-
-  <!-- TEMPLATE FOR EACH SERVICE -->
-  <section class="section light service-block">
-    <h2 class="section-title silver-text">Tree Removal</h2>
-    <p class="silver-soft">
-      Safe, controlled removal of hazardous, dead, leaning, or storm‑damaged trees.
-      <br><strong class="silver-text">Price Range: $250 – $2,500+</strong>
-    </p>
-
-    <button class="bubble-btn primary" onclick="openForm('Tree Removal')">Request This Service</button>
-
-    <div class="service-form" id="form-Tree Removal">
-      <h3 class="silver-text">Request Tree Removal</h3>
-
-      <input id="name-Tree Removal" placeholder="Your Name">
-      <input id="address-Tree Removal" placeholder="Your Address">
-      <input id="phone-Tree Removal" placeholder="Your Phone Number">
-      <textarea id="details-Tree Removal" placeholder="Describe the tree or issue"></textarea>
-
-      <button class="bubble-btn secondary" onclick="sendEmail('Tree Removal')">Send Request</button>
-    </div>
-  </section>
-
-  <!-- COPY/PASTE BLOCK FOR EACH SERVICE BELOW -->
-
-  <section class="section light service-block">
-    <h2 class="section-title silver-text">Tree Trimming & Pruning</h2>
-    <p class="silver-soft">
-      Structural pruning, thinning, shaping, roofline clearing, and deadwood removal.
-      <br><strong class="silver-text">Price Range: $150 – $900+</strong>
-    </p>
-
-    <button class="bubble-btn primary" onclick="openForm('Tree Trimming')">Request This Service</button>
-
-    <div class="service-form" id="form-Tree Trimming">
-      <h3 class="silver-text">Request Tree Trimming</h3>
-
-      <input id="name-Tree Trimming" placeholder="Your Name">
-      <input id="address-Tree Trimming" placeholder="Your Address">
-      <input id="phone-Tree Trimming" placeholder="Your Phone Number">
-      <textarea id="details-Tree Trimming" placeholder="Describe the trimming needed"></textarea>
-
-      <button class="bubble-btn secondary" onclick="sendEmail('Tree Trimming')">Send Request</button>
-    </div>
-  </section>
-
-  <section class="section light service-block">
-    <h2 class="section-title silver-text">Storm & Emergency Response</h2>
-    <p class="silver-soft">
-      Fast removal of downed trees and limbs after storms.
-      <br><strong class="silver-text">Price Range: $300 – $3,500+</strong>
-    </p>
-
-    <button class="bubble-btn primary" onclick="openForm('Storm Cleanup')">Request This Service</button>
-
-    <div class="service-form" id="form-Storm Cleanup">
-      <h3 class="silver-text">Request Storm Cleanup</h3>
-
-      <input id="name-Storm Cleanup" placeholder="Your Name">
-      <input id="address-Storm Cleanup" placeholder="Your Address">
-      <input id="phone-Storm Cleanup" placeholder="Your Phone Number">
-      <textarea id="details-Storm Cleanup" placeholder="Describe the storm damage"></textarea>
-
-      <button class="bubble-btn secondary" onclick="sendEmail('Storm Cleanup')">Send Request</button>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <p class="silver-soft">© 2026 Kevin’s Tree Service LLC</p>
-</footer>
-
-<script>
-function toggleMenu() {
-  document.getElementById("mobileMenu").classList.toggle("open");
-}
-
-function openForm(service) {
-  document.querySelectorAll('.service-form').forEach(f => f.style.display = 'none');
-  document.getElementById('form-' + service).style.display = 'block';
-}
-
-function sendEmail(service) {
-  const name = document.getElementById('name-' + service).value;
-  const address = document.getElementById('address-' + service).value;
-  const phone = document.getElementById('phone-' + service).value;
-  const details = document.getElementById('details-' + service).value;
-
-  const subject = encodeURIComponent(service + " Request");
-  const body = encodeURIComponent(
-    `SERVICE REQUEST: ${service}
-
-Client Name: ${name}
-Address: ${address}
-Phone: ${phone}
-
-Details:
-${details}
-
-Price Range: (see website section for estimate)
-
-Sent from Kevin’s Tree Service website`
-  );
-
-  window.location.href = `mailto:kevinmosley2000@gmail.com?subject=${subject}&body=${body}`;
-}
-</script>
-
-<style>
-.service-form {
-  display: none;
-  margin-top: 20px;
-  padding: 20px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 12px;
-}
-.service-form input,
-.service-form textarea {
-  margin-bottom: 12px;
-}
-</style>
 
 </body>
 </html>
