@@ -2,26 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Gallery — Kevin’s Tree Service</title>
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/img/kev-log.png">
-
-  <!-- Social Preview -->
-  <meta property="og:title" content="Kevin’s Tree Service — Before & After Gallery">
-  <meta property="og:description" content="See real before & after results from Kevin’s Tree Service.">
-  <meta property="og:image" content="/img/kev-log.png">
-  <meta property="og:type" content="website">
-
   <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    /* GLOBAL BACKGROUND — NEVER CENTERED */
+    body {
+      background: url('/img/kevins-tree-service-logo.png') top left / cover no-repeat fixed;
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    /* Make sections transparent so background shows */
+    .section.light,
+    .section.dark,
+    header.sub-header {
+      background: transparent !important;
+    }
+
+    nav, .mobile-menu, .page-main, footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Gallery grid styling */
+    .expanded-gallery {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .gallery-item {
+      position: relative;
+      height: 200px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #cfcfcf;
+      font-size: 1rem;
+      text-shadow: 0 0 6px rgba(0,0,0,0.4);
+    }
+
+    .gallery-item span {
+      opacity: 0.9;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- ============================
-     NAVIGATION + BURGER MENU
-============================= -->
 <nav class="navbar">
   <div class="brand">
     <img src="/img/kev-log.png" class="nav-logo" alt="Kevin's Tree Service logo">
@@ -43,7 +82,6 @@
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div id="mobileMenu" class="mobile-menu">
   <a href="javascript:history.back()" class="mobile-back silver-text">← Back</a>
   <a href="/index.html">Home</a>
@@ -55,9 +93,6 @@
   <a href="/pages/admin.html">Admin</a>
 </div>
 
-<!-- ============================
-     PAGE HEADER
-============================= -->
 <header class="sub-header">
   <div class="sub-header-inner">
     <h1 class="silver-text">Before & After</h1>
@@ -65,9 +100,6 @@
   </div>
 </header>
 
-<!-- ============================
-     MAIN CONTENT
-============================= -->
 <main class="page-main">
 
   <section class="section light">
@@ -75,29 +107,12 @@
 
     <div class="gallery-grid expanded-gallery">
 
-      <div class="gallery-item placeholder">
-        <span>Before / After 1</span>
-      </div>
-
-      <div class="gallery-item placeholder">
-        <span>Before / After 2</span>
-      </div>
-
-      <div class="gallery-item placeholder">
-        <span>Before / After 3</span>
-      </div>
-
-      <div class="gallery-item placeholder">
-        <span>Before / After 4</span>
-      </div>
-
-      <div class="gallery-item placeholder">
-        <span>Before / After 5</span>
-      </div>
-
-      <div class="gallery-item placeholder">
-        <span>Before / After 6</span>
-      </div>
+      <div class="gallery-item placeholder"><span>Before / After 1</span></div>
+      <div class="gallery-item placeholder"><span>Before / After 2</span></div>
+      <div class="gallery-item placeholder"><span>Before / After 3</span></div>
+      <div class="gallery-item placeholder"><span>Before / After 4</span></div>
+      <div class="gallery-item placeholder"><span>Before / After 5</span></div>
+      <div class="gallery-item placeholder"><span>Before / After 6</span></div>
 
     </div>
 
